@@ -15,6 +15,7 @@ interface UserFormInput {
   password: string;
   confirm_password?: string;
   fullName: string;
+  agree?: boolean;
 }
 
 export default function RegisterComponent() {
@@ -30,6 +31,7 @@ export default function RegisterComponent() {
       password: "",
       confirm_password: "",
       fullName: "",
+      agree: false,
     },
   });
 
@@ -38,6 +40,7 @@ export default function RegisterComponent() {
   const [isVerificationStep, setIsVerificationStep] = useState(false);
   const [code, setCode] = useState("");
   const router = useRouter();
+
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword(!showConfirmPassword);
@@ -55,8 +58,8 @@ export default function RegisterComponent() {
     try {
       const submitData = { ...data };
       delete submitData.confirm_password;
+      delete submitData.agree;
 
-      // Отправка данных на сервер — первая часть
       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
         ...submitData,
         phoneNumber: submitData.phoneNumber.replace(/[^\d+]/g, ""),
@@ -80,6 +83,7 @@ export default function RegisterComponent() {
       const values = getValues();
       const submitData = { ...values };
       delete submitData.confirm_password;
+      delete submitData.agree;
 
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/verify-phone-code`,
@@ -268,8 +272,40 @@ export default function RegisterComponent() {
                 )}
               </div>
 
+              {/* Agree to terms */}
+              <div className="flex items-center space-x-3 pt-2">
+                <input
+                  type="checkbox"
+                  id="agree"
+                  {...register("agree", {
+                    required: "Ofertaga rozilik majburiy",
+                  })}
+                  className="mt-1 h-4 w-4 text-[#CC1F00] bg-transparent border-gray-600 focus:ring-0 rounded-md cursor-pointer"
+                />
+                <label
+                  htmlFor="agree"
+                  className="text-sm text-gray-300 leading-snug"
+                >
+                  Men{" "}
+                  <a
+                    href="https://telegra.ph/PUBLICHNAYA-OFERTA-05-30-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-[#FF3A29] hover:text-[#E62200]"
+                  >
+                    Ommaviy ofertani
+                  </a>{" "}
+                  o‘qidim va rozi bo‘ldim
+                </label>
+              </div>
+              {errors.agree && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.agree.message}
+                </p>
+              )}
+
               <div className="pt-2 sm:pt-4">
-                <Button className="w-full bg-[#CC1F00] hover:bg-[#B31B00] text-white h-10 sm:h-12 rounded-md font-medium">
+                <Button className="w-full bg-[#CC1F00] hover:bg-[#B31B00] text-white h-10 sm:h-12 rounded-md font-medium cursor-pointer">
                   Davom etish
                 </Button>
               </div>
