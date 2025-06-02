@@ -53,7 +53,7 @@ export function CourseCard({
           ></div>
           <Image
             className="w-full object-cover transition-transform duration-700 ease-out h-[220px]"
-            src={imageUrl}
+            src={`${process.env.NEXT_PUBLIC_API_URL}/${imageUrl}`}
             alt={title}
             width={400}
             height={300}

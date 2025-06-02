@@ -3,7 +3,13 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import clsx from "clsx";
-import { BookOpenIcon, HomeIcon, LogOut, SettingsIcon } from "lucide-react";
+import {
+  BookOpenIcon,
+  HomeIcon,
+  LogOut,
+  SettingsIcon,
+  SquareArrowOutUpRight,
+} from "lucide-react";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useUserStore } from "@/store/userStore";
@@ -74,6 +80,17 @@ const Sidebar = () => {
             >
               <SettingsIcon width={20} height={20} />
               Sozlama
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="https://j-hayot.org"
+              className={clsx(
+                "px-4 py-2 rounded hover:bg-[#520900] flex items-center gap-4 font-medium"
+              )}
+            >
+              <SquareArrowOutUpRight width={20} height={20} />
+              Saytga o&apos;tish
             </Link>
           </li>
         </ul>

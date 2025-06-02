@@ -209,7 +209,14 @@ export default function RegisterComponent() {
                     id="password"
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    {...register("password", { required: "Parol majburiy" })}
+                    {...register("password", {
+                      required: "Parol majburiy",
+                      minLength: {
+                        value: 8,
+                        message:
+                          "Parol kamida 8 belgidan iborat bo‘lishi kerak",
+                      },
+                    })}
                     className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md"
                   />
                   <Button

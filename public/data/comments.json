@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "videoId": "video-1",
+    "username": "Abror",
+    "text": "Juda ham kerakli mavzu — ruhiy jihatdan yordam berdi 🙏",
+    "timestamp": "2025-05-30T12:00:00Z"
+  },
+  {
+    "id": 2,
+    "videoId": "video-1",
+    "username": "Zilola",
+    "text": "Zo‘r kurs 🔥",
+    "timestamp": "2025-05-30T12:15:00Z"
+  },
+  {
+    "id": 3,
+    "videoId": "video-1",
+    "username": "Sardor",
+    "text": "Fikrlar hayratda qoldirdi — bunday kurslar kam 😍",
+    "timestamp": "2025-05-30T12:30:00Z"
+  },
+  {
+    "id": 4,
+    "videoId": "video-1",
+    "username": "Malika",
+    "text": "Juda foydali video — hayotimni o‘zgartiryapti 💯",
+    "timestamp": "2025-05-30T12:45:00Z"
+  },
+  {
+    "id": 5,
+    "videoId": "video-1",
+    "username": "Kamron",
+    "text": "Ajoyib maslahatlar 👏",
+    "timestamp": "2025-05-30T13:00:00Z"
+  },
+  {
+    "id": 6,
+    "videoId": "video-1",
+    "username": "Nargiza",
+    "text": "Partnerim bilan birga ko‘rdik — juda foydali 😍",
+    "timestamp": "2025-05-30T13:15:00Z"
+  },
+  {
+    "id": 7,
+    "videoId": "video-1",
+    "username": "Javlon",
+    "text": "Kurs juda ham yoqdi — yaqinlarim bilan baham ko‘rdim 😊",
+    "timestamp": "2025-05-30T13:30:00Z"
+  },
+  {
+    "id": 8,
+    "videoId": "video-1",
+    "username": "Shaxzoda",
+    "text": "Hamma ko‘rishi kerak 💯",
+    "timestamp": "2025-05-30T13:45:00Z"
+  },
+  {
+    "id": 9,
+    "videoId": "video-1",
+    "username": "Umid",
+    "text": "Qoyil qoldim 👍",
+    "timestamp": "2025-05-30T14:00:00Z"
+  },
+  {
+    "id": 10,
+    "videoId": "video-1",
+    "username": "Gulnoza",
+    "text": "Sifatli kontent — ochiqchasiga aytilgani yoqdi ❤️",
+    "timestamp": "2025-05-30T14:15:00Z"
+  },
+  {
+    "id": 11,
+    "videoId": "video-1",
+    "username": "Doston",
+    "text": "Bu kurs men kutgan narsani berdi 🔥",
+    "timestamp": "2025-05-30T14:30:00Z"
+  },
+  {
+    "id": 12,
+    "videoId": "video-1",
+    "username": "Sevara",
+    "text": "Ayollar uchun aynan kerakli mavzu 👩‍❤️‍👨",
+    "timestamp": "2025-05-30T14:45:00Z"
+  },
+  {
+    "id": 13,
+    "videoId": "video-1",
+    "username": "Rustam",
+    "text": "Yurakka urdi 😢",
+    "timestamp": "2025-05-30T15:00:00Z"
+  },
+  {
+    "id": 14,
+    "videoId": "video-1",
+    "username": "Dilshod",
+    "text": "O‘z ustimda ishlashga turtki berdi 💪",
+    "timestamp": "2025-05-30T15:15:00Z"
+  },
+  {
+    "id": 15,
+    "videoId": "video-1",
+    "username": "Madina",
+    "text": "Shunchaki qoyil qoldim 🤩",
+    "timestamp": "2025-05-30T15:30:00Z"
+  },
+  {
+    "id": 16,
+    "videoId": "video-1",
+    "username": "Asad",
+    "text": "Bu darslar juda motivatsion 😊",
+    "timestamp": "2025-05-30T15:45:00Z"
+  },
+  {
+    "id": 17,
+    "videoId": "video-1",
+    "username": "Nigora",
+    "text": "Sevgi haqida endi boshqacha o‘ylayman 💕",
+    "timestamp": "2025-05-30T16:00:00Z"
+  },
+  {
+    "id": 18,
+    "videoId": "video-1",
+    "username": "Bobur",
+    "text": "Hamma yoshdagilar uchun foydali 🔝",
+    "timestamp": "2025-05-30T16:15:00Z"
+  },
+  {
+    "id": 19,
+    "videoId": "video-1",
+    "username": "Zarina",
+    "text": "Tavsiya qilaman 🙌",
+    "timestamp": "2025-05-30T16:30:00Z"
+  },
+  {
+    "id": 20,
+    "videoId": "video-1",
+    "username": "Eldor",
+    "text": "Bunday kontent kam uchraydi 👏",
+    "timestamp": "2025-05-30T16:45:00Z"
+  },
+  {
+    "id": 21,
+    "videoId": "video-1",
+    "username": "Moxira",
+    "text": "Shu mavzuni kutgan edim 😍",
+    "timestamp": "2025-05-30T17:00:00Z"
+  },
+  {
+    "id": 22,
+    "videoId": "video-1",
+    "username": "Otabek",
+    "text": "Yana shunaqa videolar kutamiz 🔄",
+    "timestamp": "2025-05-30T17:15:00Z"
+  },
+  {
+    "id": 23,
+    "videoId": "video-1",
+    "username": "Feruza",
+    "text": "Munosabatlarga boshqacha qarayman endi 🧠",
+    "timestamp": "2025-05-30T17:30:00Z"
+  },
+  {
+    "id": 24,
+    "videoId": "video-1",
+    "username": "Shohjahon",
+    "text": "Fikrlar chuqur, oddiy qilib tushuntirilgan 🙏",
+    "timestamp": "2025-05-30T17:45:00Z"
+  },
+  {
+    "id": 25,
+    "videoId": "video-1",
+    "username": "Laylo",
+    "text": "Ko‘p narsa tushunib yetdim ❤️",
+    "timestamp": "2025-05-30T18:00:00Z"
+  },
+  {
+    "id": 26,
+    "videoId": "video-1",
+    "username": "Aziz",
+    "text": "Gap yo‘q sizga 💯",
+    "timestamp": "2025-05-30T18:15:00Z"
+  },
+  {
+    "id": 27,
+    "videoId": "video-1",
+    "username": "Gulnora",
+    "text": "Har bir dars yurakka tegadi 😢",
+    "timestamp": "2025-05-30T18:30:00Z"
+  },
+  {
+    "id": 28,
+    "videoId": "video-1",
+    "username": "Ilyos",
+    "text": "Endi qanday munosabat qurishni bilaman 👌",
+    "timestamp": "2025-05-30T18:45:00Z"
+  },
+  {
+    "id": 29,
+    "videoId": "video-1",
+    "username": "Zuhra",
+    "text": "Aytinglar-chi, qachon yangi video chiqadi? ⏳",
+    "timestamp": "2025-05-30T19:00:00Z"
+  },
+  {
+    "id": 30,
+    "videoId": "video-1",
+    "username": "Mirjalol",
+    "text": "Men bu kursdan ko‘p narsa oldim 🧠",
+    "timestamp": "2025-05-30T19:15:00Z"
+  },
+  {
+    "id": 31,
+    "videoId": "video-1",
+    "username": "Saida",
+    "text": "Real hayotga yaqin misollar 👍",
+    "timestamp": "2025-05-30T19:30:00Z"
+  },
+  {
+    "id": 32,
+    "videoId": "video-1",
+    "username": "Sanjar",
+    "text": "Darsdan keyin ko‘zlarim ochildi 😮",
+    "timestamp": "2025-05-30T19:45:00Z"
+  },
+  {
+    "id": 33,
+    "videoId": "video-1",
+    "username": "Nodira",
+    "text": "Sevgan insoningiz bilan ko‘rish kerak 👫",
+    "timestamp": "2025-05-30T20:00:00Z"
+  },
+  {
+    "id": 34,
+    "videoId": "video-1",
+    "username": "Bekzod",
+    "text": "Juda samimiy fikrlar 👏",
+    "timestamp": "2025-05-30T20:15:00Z"
+  },
+  {
+    "id": 35,
+    "videoId": "video-1",
+    "username": "Shirin",
+    "text": "Yaxshi video edi 😊",
+    "timestamp": "2025-05-30T20:30:00Z"
+  },
+  {
+    "id": 36,
+    "videoId": "video-1",
+    "username": "Farrux",
+    "text": "Juda ochiq va to‘g‘ri aytildi 👌",
+    "timestamp": "2025-05-30T20:45:00Z"
+  },
+  {
+    "id": 37,
+    "videoId": "video-1",
+    "username": "Dilnoza",
+    "text": "Ayollar ham, erkaklar ham ko‘rishi kerak 🔄",
+    "timestamp": "2025-05-30T21:00:00Z"
+  },
+  {
+    "id": 38,
+    "videoId": "video-1",
+    "username": "Jasur",
+    "text": "Fikrlaringiz ilhomlantiradi 🌟",
+    "timestamp": "2025-05-30T21:15:00Z"
+  },
+  {
+    "id": 39,
+    "videoId": "video-1",
+    "username": "Lobar",
+    "text": "Endi o‘z munosabatimga boshqacha qarayapman 🤝",
+    "timestamp": "2025-05-30T21:30:00Z"
+  },
+  {
+    "id": 40,
+    "videoId": "video-1",
+    "username": "Shaxriyor",
+    "text": "Juda tushunarli qilib aytilgan 🙌",
+    "timestamp": "2025-05-30T21:45:00Z"
+  },
+  {
+    "id": 41,
+    "videoId": "video-1",
+    "username": "Mavluda",
+    "text": "Raxmat sizga ❤️",
+    "timestamp": "2025-05-30T22:00:00Z"
+  },
+  {
+    "id": 42,
+    "videoId": "video-1",
+    "username": "Alisher",
+    "text": "Nafaqat o‘rgatadi, balki o‘ylantiradi ham 🧠",
+    "timestamp": "2025-05-30T22:15:00Z"
+  },
+  {
+    "id": 43,
+    "videoId": "video-1",
+    "username": "Guzal",
+    "text": "Yaxshi maslahatlar uchun rahmat 😊",
+    "timestamp": "2025-05-30T22:30:00Z"
+  },
+  {
+    "id": 44,
+    "videoId": "video-1",
+    "username": "Komil",
+    "text": "Partnerimga ham yubordim 🇨🇺",
+    "timestamp": "2025-05-30T22:45:00Z"
+  },
+  {
+    "id": 45,
+    "videoId": "video-1",
+    "username": "Oydin",
+    "text": "Juda foydali loyiha 💡",
+    "timestamp": "2025-05-30T23:00:00Z"
+  },
+  {
+    "id": 46,
+    "videoId": "video-1",
+    "username": "Davron",
+    "text": "Har darsdan keyin fikrlashim o‘zgaradi 💭",
+    "timestamp": "2025-05-30T23:15:00Z"
+  },
+  {
+    "id": 47,
+    "videoId": "video-1",
+    "username": "Sitora",
+    "text": "Ajoyib ish qilgansizlar 👏",
+    "timestamp": "2025-05-30T23:30:00Z"
+  },
+  {
+    "id": 48,
+    "videoId": "video-1",
+    "username": "Mirzo",
+    "text": "Ko‘proq shunaqa kontent chiqaringlar 🙏",
+    "timestamp": "2025-05-30T23:45:00Z"
+  },
+  {
+    "id": 49,
+    "videoId": "video-1",
+    "username": "Gulbahor",
+    "text": "Bu videoni ko‘rib o‘z xatolarimni ko‘rdim 😢",
+    "timestamp": "2025-05-31T00:00:00Z"
+  },
+  {
+    "id": 50,
+    "videoId": "video-1",
+    "username": "Xurshid",
+    "text": "O‘zgarish qilishimga sababchi bo‘ldingiz 🙌",
+    "timestamp": "2025-05-31T00:15:00Z"
+  },
+  {
+    "id": 51,
+    "videoId": "video-1",
+    "username": "Zumrad",
+    "text": "Video juda professional tayyorlangan 🎥",
+    "timestamp": "2025-05-31T00:30:00Z"
+  },
+  {
+    "id": 52,
+    "videoId": "video-1",
+    "username": "Islom",
+    "text": "Tavsiya qilaman, ayniqsa yoshlar uchun 🔝",
+    "timestamp": "2025-05-31T00:45:00Z"
+  },
+  {
+    "id": 53,
+    "videoId": "video-1",
+    "username": "Munisa",
+    "text": "Ota-onalar ham ko‘rishi kerak deb o‘ylayman 👨‍👩‍👧",
+    "timestamp": "2025-05-31T01:00:00Z"
+  },
+  {
+    "id": 54,
+    "videoId": "video-1",
+    "username": "Temur",
+    "text": "Shunchalik hayotiy va samimiy ediki 😍",
+    "timestamp": "2025-05-31T01:15:00Z"
+  },
+  {
+    "id": 55,
+    "videoId": "video-1",
+    "username": "Dilorom",
+    "text": "Har bir aytgan gapingiz rost ❤️",
+    "timestamp": "2025-05-31T01:30:00Z"
+  },
+  {
+    "id": 56,
+    "videoId": "video-1",
+    "username": "Siroj",
+    "text": "Sizning yondashuvingiz menga juda yoqdi 👌",
+    "timestamp": "2025-05-31T01:45:00Z"
+  },
+  {
+    "id": 57,
+    "videoId": "video-1",
+    "username": "Nilufar",
+    "text": "Juda foydali maslahatlar bor ekan 💡",
+    "timestamp": "2025-05-31T02:00:00Z"
+  },
+  {
+    "id": 58,
+    "videoId": "video-1",
+    "username": "Akbar",
+    "text": "Raxmat sizlarga — davom eting! 👏",
+    "timestamp": "2025-05-31T02:15:00Z"
+  },
+  {
+    "id": 59,
+    "videoId": "video-1",
+    "username": "Maftuna",
+    "text": "Hamma o‘smirlarga ko‘rsatish kerak deb o‘ylayman 🧒",
+    "timestamp": "2025-05-31T02:30:00Z"
+  },
+  {
+    "id": 60,
+    "videoId": "video-1",
+    "username": "Shavkat",
+    "text": "Bu video menga yangi nigoh berdi 👀",
+    "timestamp": "2025-05-31T02:45:00Z"
+  },
+  {
+    "id": 61,
+    "videoId": "video-1",
+    "username": "Asal",
+    "text": "Juda yaxshi loyihalardan biri 🔥",
+    "timestamp": "2025-05-31T03:00:00Z"
+  },
+  {
+    "id": 62,
+    "videoId": "video-1",
+    "username": "Mirkomil",
+    "text": "Ajoyib suhbatlar va mavzular 😍",
+    "timestamp": "2025-05-31T03:15:00Z"
+  },
+  {
+    "id": 63,
+    "videoId": "video-1",
+    "username": "Sabrina",
+    "text": "Bilimli bo‘lish uchun kerakli kurs 🧠",
+    "timestamp": "2025-05-31T03:30:00Z"
+  },
+  {
+    "id": 64,
+    "videoId": "video-1",
+    "username": "Oybek",
+    "text": "Qisqa, tushunarli va foydali 🎯",
+    "timestamp": "2025-05-31T03:45:00Z"
+  },
+  {
+    "id": 65,
+    "videoId": "video-1",
+    "username": "Gulchexra",
+    "text": "Bunday videolar ko‘proq bo‘lishi kerak 💯",
+    "timestamp": "2025-05-31T04:00:00Z"
+  },
+  {
+    "id": 66,
+    "videoId": "video-1",
+    "username": "Sohib",
+    "text": "Munosabatni mustahkamlash uchun kerakli maslahatlar 🤝",
+    "timestamp": "2025-05-31T04:15:00Z"
+  },
+  {
+    "id": 67,
+    "videoId": "video-1",
+    "username": "Manzura",
+    "text": "Yaxshi dars bo‘ldi, raxmat sizga 🙏",
+    "timestamp": "2025-05-31T04:30:00Z"
+  },
+  {
+    "id": 68,
+    "videoId": "video-1",
+    "username": "Xojiakbar",
+    "text": "Ilgari bilmagan narsalarimni bildim 🧠",
+    "timestamp": "2025-05-31T04:45:00Z"
+  },
+  {
+    "id": 69,
+    "videoId": "video-1",
+    "username": "Niso",
+    "text": "Har bir mavzu ochiq va samimiy yoritilgan 🌟",
+    "timestamp": "2025-05-31T05:00:00Z"
+  },
+  {
+    "id": 70,
+    "videoId": "video-1",
+    "username": "Jalol",
+    "text": "Juda ta’sirli nutq edi 😢",
+    "timestamp": "2025-05-31T05:15:00Z"
+  },
+  {
+    "id": 71,
+    "videoId": "video-1",
+    "username": "Gulshod",
+    "text": "Zo‘r maslahatlar bor edi 👏",
+    "timestamp": "2025-05-31T05:30:00Z"
+  },
+  {
+    "id": 72,
+    "videoId": "video-1",
+    "username": "Sarvar",
+    "text": "Endi hayotimni boshqacha quraman 🔄",
+    "timestamp": "2025-05-31T05:45:00Z"
+  },
+  {
+    "id": 73,
+    "videoId": "video-1",
+    "username": "Zaynab",
+    "text": "To‘g‘ri aytilgan fikrlar juda zarur edi ❤️",
+    "timestamp": "2025-05-31T06:00:00Z"
+  },
+  {
+    "id": 74,
+    "videoId": "video-1",
+    "username": "Nurbek",
+    "text": "Er-xotin birga ko‘rish kerak bu videoni 👨‍👩‍👧",
+    "timestamp": "2025-05-31T06:15:00Z"
+  },
+  {
+    "id": 75,
+    "videoId": "video-1",
+    "username": "Shohista",
+    "text": "Motivatsiya olish uchun ideal kontent 💡",
+    "timestamp": "2025-05-31T06:30:00Z"
+  },
+  {
+    "id": 76,
+    "videoId": "video-1",
+    "username": "Qudrat",
+    "text": "Juda ijobiy ta’sir oldim 😊",
+    "timestamp": "2025-05-31T06:45:00Z"
+  },
+  {
+    "id": 77,
+    "videoId": "video-1",
+    "username": "Mohira",
+    "text": "Menga juda yoqdi 😍",
+    "timestamp": "2025-05-31T07:00:00Z"
+  },
+  {
+    "id": 78,
+    "videoId": "video-1",
+    "username": "Sunnat",
+    "text": "Yana bunday darslar bo‘lsa, qatnashaman! 🙌",
+    "timestamp": "2025-05-31T07:15:00Z"
+  },
+  {
+    "id": 79,
+    "videoId": "video-1",
+    "username": "Dildora",
+    "text": "Har bir odam uchun muhim mavzular 🔍",
+    "timestamp": "2025-05-31T07:30:00Z"
+  },
+  {
+    "id": 80,
+    "videoId": "video-1",
+    "username": "Botir",
+    "text": "Bu kursga o‘xshaganlar juda kerak 🧠",
+    "timestamp": "2025-05-31T07:45:00Z"
+  },
+  {
+    "id": 81,
+    "videoId": "video-1",
+    "username": "Gulrukh",
+    "text": "Yigitlar ham ko‘rsin bu videoni 🙋‍♂️",
+    "timestamp": "2025-05-31T08:00:00Z"
+  },
+  {
+    "id": 82,
+    "videoId": "video-1",
+    "username": "Ilxom",
+    "text": "Ayollar uchun maslahatlar zo‘r 👍",
+    "timestamp": "2025-05-31T08:15:00Z"
+  },
+  {
+    "id": 83,
+    "videoId": "video-1",
+    "username": "Roxila",
+    "text": "Munosabatdagi muammolarni tushunib yetdim 💔",
+    "timestamp": "2025-05-31T08:30:00Z"
+  },
+  {
+    "id": 84,
+    "videoId": "video-1",
+    "username": "Shoxrux",
+    "text": "Bu video ko‘p narsani anglatadi ❤️",
+    "timestamp": "2025-05-31T08:45:00Z"
+  },
+  {
+    "id": 85,
+    "videoId": "video-1",
+    "username": "Mashxura",
+    "text": "Qiziqib tingladim 🎧",
+    "timestamp": "2025-05-31T09:00:00Z"
+  },
+  {
+    "id": 86,
+    "videoId": "video-1",
+    "username": "Avaz",
+    "text": "To‘g‘ridan to‘g‘ri yurakka urdi 😢",
+    "timestamp": "2025-05-31T09:15:00Z"
+  },
+  {
+    "id": 87,
+    "videoId": "video-1",
+    "username": "Xadicha",
+    "text": "Foydali va o‘ziga tortadigan darslar 🔥",
+    "timestamp": "2025-05-31T09:30:00Z"
+  },
+  {
+    "id": 88,
+    "videoId": "video-1",
+    "username": "Ibroxim",
+    "text": "Video juda iliq edi ☀️",
+    "timestamp": "2025-05-31T09:45:00Z"
+  },
+  {
+    "id": 89,
+    "videoId": "video-1",
+    "username": "Zarifa",
+    "text": "Kurs yakunida o‘zgarganligimni sezdim 🔁",
+    "timestamp": "2025-05-31T10:00:00Z"
+  },
+  {
+    "id": 90,
+    "videoId": "video-1",
+    "username": "Firdavs",
+    "text": "Umuman olganda a’lo 👌",
+    "timestamp": "2025-05-31T10:15:00Z"
+  },
+  {
+    "id": 91,
+    "videoId": "video-1",
+    "username": "Xilola",
+    "text": "Maslahatlaringiz juda kerak edi 🙏",
+    "timestamp": "2025-05-31T10:30:00Z"
+  },
+  {
+    "id": 92,
+    "videoId": "video-1",
+    "username": "Sherzod",
+    "text": "Video oxirigacha qiziqarlik bo‘ldi 🎥",
+    "timestamp": "2025-05-31T10:45:00Z"
+  },
+  {
+    "id": 93,
+    "videoId": "video-1",
+    "username": "Oygul",
+    "text": "Psixologik yondashuv juda to‘g‘ri 💭",
+    "timestamp": "2025-05-31T11:00:00Z"
+  },
+  {
+    "id": 94,
+    "videoId": "video-1",
+    "username": "Jahongir",
+    "text": "Meni o‘ylantirgan dars bo‘ldi 🧠",
+    "timestamp": "2025-05-31T11:15:00Z"
+  },
+  {
+    "id": 95,
+    "videoId": "video-1",
+    "username": "Shaxnoza",
+    "text": "Hamma bu kursni ko‘rishi kerak 🔝",
+    "timestamp": "2025-05-31T11:30:00Z"
+  },
+  {
+    "id": 96,
+    "videoId": "video-1",
+    "username": "Ulugbek",
+    "text": "Juda foydali loyihaga qo‘l uribsizlar 👏",
+    "timestamp": "2025-05-31T11:45:00Z"
+  },
+  {
+    "id": 97,
+    "videoId": "video-1",
+    "username": "Mubina",
+    "text": "Kurs hayotimda burilish yasadi 💫",
+    "timestamp": "2025-05-31T12:00:00Z"
+  },
+  {
+    "id": 98,
+    "videoId": "video-1",
+    "username": "Anvar",
+    "text": "Endi o‘zimga ishonch hosil qildim 🙌",
+    "timestamp": "2025-05-31T12:15:00Z"
+  },
+  {
+    "id": 99,
+    "videoId": "video-1",
+    "username": "Gulnaz",
+    "text": "Bu kursdan keyin ko‘p narsa o‘zgardi 🔄",
+    "timestamp": "2025-05-31T12:30:00Z"
+  },
+  {
+    "id": 100,
+    "videoId": "video-1",
+    "username": "Tohir",
+    "text": "Men bunday ochiq kontentni ilk marta ko‘ryapman 😮",
+    "timestamp": "2025-05-31T12:45:00Z"
+  }
+]

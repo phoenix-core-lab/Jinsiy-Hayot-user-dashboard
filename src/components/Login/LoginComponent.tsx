@@ -53,8 +53,8 @@ export default function LoginComponent() {
       Cookies.set("access_token", token, { expires: 7, path: "/" });
 
       console.log("Login successful:", token);
-      router.push("/dashboard");
-    } catch (error: unknown ) {
+      router.push("/courses/1");
+    } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         if (axios.isAxiosError(error)) {
           if (error.status === 401) {

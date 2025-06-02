@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import ModuleList from "../ModuleList/ModuleList";
 import { useCourseStore } from "@/store/courseStore";
 import { motion } from "framer-motion"; // ✅ Framer Motion
+import { CommentsSection } from "../CommentsSection/CommentsSection";
+import { MobileComments } from "../MobileComments/MobileComments";
 
 const CourseDashboard = ({ id }: { id: string }) => {
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
@@ -22,7 +24,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
 
   return (
     <div className="flex flex-col w-full gap-3 lg:flex-row mx-auto h-full lg:p-2">
-      <div className="lg:w-[68%]">
+      <div className="lg:w-[75%]">
         <motion.div
           className="sticky top-0 z-50 bg-black lg:static lg:rounded-lg"
           initial={{ opacity: 0, y: 20 }}
@@ -63,6 +65,10 @@ const CourseDashboard = ({ id }: { id: string }) => {
           <p className="text-[#B0B0B0]">{course.description}</p>
         </motion.div>
 
+        <div className="hidden lg:block">
+          <CommentsSection videoId={"video-1"} />
+        </div>
+        <MobileComments videoId={"video-1"} />
         <div className="lg:hidden mt-3 mb-3">
           {course.modules.map((item, index) => (
             <motion.div
@@ -82,7 +88,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
       </div>
 
       <div
-        className="hidden lg:block lg:w-[32%] h-full rounded-lg text-white overflow-y-auto"
+        className="hidden lg:block lg:w-[25%] h-full rounded-lg text-white overflow-y-auto"
         style={{
           scrollBehavior: "smooth",
           scrollbarWidth: "thin",

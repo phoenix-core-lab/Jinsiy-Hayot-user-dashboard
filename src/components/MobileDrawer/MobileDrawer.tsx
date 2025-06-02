@@ -14,6 +14,7 @@ import {
   HomeIcon,
   LogOut,
   SettingsIcon,
+  SquareArrowOutUpRight,
   XIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -100,6 +101,17 @@ const MobileDrawer = () => {
               >
                 <SettingsIcon width={20} height={20} />
                 Sozlama
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://j-hayot.org"
+                className={clsx(
+                  "px-4 py-2 rounded hover:bg-[#520900] flex items-center gap-4 font-medium"
+                )}
+              >
+                <SquareArrowOutUpRight width={20} height={20} />
+                Saytga o&apos;tish
               </Link>
             </li>
           </ul>

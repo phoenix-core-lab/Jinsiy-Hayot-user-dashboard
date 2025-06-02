@@ -6,7 +6,14 @@ import { Module, Lesson } from "@/store/courseStore";
 import { motion, useInView } from "framer-motion";
 import { useRef, useLayoutEffect } from "react";
 import Cookies from "js-cookie";
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { BonusVideoCard } from "../BonusVideoCard/BonusVideoCard";
+import { PdfLessonCard } from "../PDFLessonCard/PDFLessonCard";
 type ModuleListProps = {
   ModuleId: number;
   module: Module;
@@ -38,43 +45,50 @@ const ModuleList = ({ module, lessons }: ModuleListProps) => {
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="p-5 pt-2 pl-2 lg:pl-0">
-        <h1 className="md:text-xl xl:text-2xl font-medium">
-          {module ? module.title : "Yuklanmoqda..."}
-        </h1>
-        <p className="font-medium text-gray-400">{module.time}</p>
-      </div>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="p-5 pt-2 pl-2 lg:pl-0">
+            <h1 className="md:text-xl xl:text-2xl font-medium">
+              {module ? module.title : "Yuklanmoqda..."}
+            </h1>
+            <p className="font-medium text-gray-400">{module.time}</p>
+          </AccordionTrigger>
 
-      <ul
-        className="space-y-2"
-        style={{
-          scrollBehavior: "smooth",
-          scrollbarWidth: "thin",
-          scrollbarColor: "#520900 #300100",
-        }}
-      >
-        {lessons.map((item, index) => (
-          <motion.li
-            key={item.id}
-            onClick={() => item.videoUrl && updateCurrentVideo(item.videoUrl)}
-            className="cursor-pointer"
-            role="listitem"
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: index * 0.05, duration: 0.3 }}
+          <AccordionContent
+            className="space-y-2"
+            style={{
+              scrollBehavior: "smooth",
+              scrollbarWidth: "thin",
+              scrollbarColor: "#520900 #300100",
+            }}
           >
-            <VideoMiniCard
-              id={item.id}
-              title={item.title}
-              description={item.description || "Dars haqida ma'lumot"}
-              isActive={item.videoUrl === currentVideo}
-              items={item.items}
-            />
-          </motion.li>
-        ))}
-      </ul>
+            {lessons.map((item, index) => (
+              <motion.div
+                key={item.id}
+                onClick={() =>
+                  item.videoUrl && updateCurrentVideo(item.videoUrl)
+                }
+                className="cursor-pointer"
+                role="listitem"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: index * 0.05, duration: 0.3 }}
+              >
+                <VideoMiniCard
+
+                  id={item.id}
+                  title={item.title}
+                  description={item.description || "Dars haqida ma'lumot"}
+                  isActive={item.videoUrl === currentVideo}
+                  items={item.items}
+                />
+              </motion.div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </motion.div>
   );
 };

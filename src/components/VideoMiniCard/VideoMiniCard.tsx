@@ -20,8 +20,7 @@ export const VideoMiniCard = ({
   isActive,
   id,
   items,
-}: VideoCardProps) => {;
-
+}: VideoCardProps) => {
   const handleDownload = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -62,14 +61,16 @@ export const VideoMiniCard = ({
         <h3 className="text-[18px] font-medium">{title}</h3>
         <p className="leading-[100%] text-sm text-[14px] mb-2">{description}</p>
         <div className="mt-2">
-          <Button
-            onClick={handleDownload}
-            size="sm"
-            className="h-8 bg-transparent text-gray-500 hover:text-gray-400 border border-gray-500 rounded-md flex items-center gap-1.5 px-3 transition-colors cursor-pointer"
-          >
-            <DownloadIcon className="h-3.5 w-3.5" />
-            <span className="text-xs font-medium">Dars materiallari</span>
-          </Button>
+          {items && (
+            <Button
+              onClick={handleDownload}
+              size="sm"
+              className="h-8 bg-transparent text-gray-500 hover:text-gray-400 border border-gray-500 rounded-md flex items-center gap-1.5 px-3 transition-colors cursor-pointer"
+            >
+              <DownloadIcon className="h-3.5 w-3.5" />
+              <span className="text-xs font-medium">Dars materiallari</span>
+            </Button>
+          )}
         </div>
       </div>
     </div>

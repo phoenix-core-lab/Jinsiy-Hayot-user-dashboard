@@ -23,15 +23,15 @@ const Header = () => {
     >
       <div className="p-4">
         <div className="flex md:items-center justify-between ">
-          <Link href="/dashboard">
-            <Image src="/logo.svg" alt="logo" width={111} height={30} />
-          </Link>
           <button
             onClick={() => setOpen(true)}
-            className="lg:hidden bg-transparent cursor-pointer hover:bg-transparent"
+            className=" bg-transparent cursor-pointer hover:bg-transparent"
           >
             <MenuIcon width={25} height={25} />
           </button>
+          <Link href="/dashboard">
+            <Image src="/logo.svg" alt="logo" width={111} height={30} />
+          </Link>
           <h3 className="hidden lg:block text-lg font-semibold">
             Kurs:{course?.title || "Yuklanmoqda..."}
           </h3>

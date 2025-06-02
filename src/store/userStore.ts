@@ -41,8 +41,8 @@ export const useUserStore = create<UserStore>((set) => ({
         "status" in error &&
         error.status === 401
       ) {
-        Cookies.remove("access_token");
-        window.location.href = "/";
+        // Cookies.remove("access_token");
+        // window.location.href = "/";
       }
       console.error("Failed to fetch user", error);
     }
