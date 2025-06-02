@@ -32,7 +32,7 @@ export function middleware(request: NextRequest) {
   const isValidToken = /^[a-zA-Z0-9._-]{20,300}$/.test(token);
 
   if (isValidToken) {
-    const response = NextResponse.redirect(new URL("/dashboard", request.url));
+    const response = NextResponse.redirect(new URL("/courses/1", request.url));
     response.cookies.set("access_token", token, {
       path: "/",
       maxAge: 60 * 60 * 24 * 7,

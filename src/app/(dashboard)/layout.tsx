@@ -14,7 +14,11 @@ export default function DashboardLayout({
       <MobileDrawer />
       <div className="flex flex-col h-[calc(100vh-83px)] lg:flex-row">
         <Sidebar />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <div className="twinkling"></div>
+          <div className="stars"></div>
+          {children}
+        </main>
         <NewsSidebar />
       </div>
     </div>
