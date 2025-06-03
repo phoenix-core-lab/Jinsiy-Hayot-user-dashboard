@@ -55,6 +55,8 @@ export default function RegisterComponent() {
   };
 
   const handleRegister: SubmitHandler<UserFormInput> = async (data) => {
+    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+
     try {
       const submitData = { ...data };
       delete submitData.confirm_password;
