@@ -80,9 +80,9 @@ export default function LoginComponent() {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-black overflow-hidden">
-      <div className="w-full lg:w-[40%] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col relative z-10">
-        <div className="mb-8 md:mb-16">
-          <div className="w-[159px] h-[54px]">
+      <div className="w-full lg:w-[40%] p-4 sm:p-6 md:p-8 lg:p-12 flex justify-center items-center h-screen relative z-10">
+        <div className="w-full max-w-md flex flex-col items-center">
+          <div className="w-[159px] h-[54px] mb-6">
             <Image
               src="/logo.svg"
               alt="Logo"
@@ -91,121 +91,121 @@ export default function LoginComponent() {
               className="brightness-200"
             />
           </div>
-        </div>
 
-        <div className="flex-grow flex flex-col justify-center max-w-md mx-auto w-full">
-          <h1 className="text-white text-xl sm:text-2xl font-medium mb-2">
-            Platformaga kirish!
-          </h1>
-          <p className="text-gray-400 text-xs sm:text-sm mb-6 sm:mb-8">
-            Yangi foydalanuvchi? /
-            <Link
-              href="/register"
-              className="text-[#FF3A29] hover:text-[#E62200] ml-1"
-            >
-              Ro‘yxatdan o‘tish
-            </Link>
-          </p>
-
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5 sm:space-y-6 w-full"
-          >
-            <div className="space-y-2">
-              <label
-                htmlFor="phoneNumber"
-                className="text-gray-400 text-[16px]"
+          <div className="w-full">
+            <h1 className="text-white text-xl sm:text-2xl font-medium mb-2 text-center">
+              Platformaga kirish!
+            </h1>
+            <p className="text-gray-400 text-xs sm:text-sm mb-6 sm:mb-8 text-center">
+              Yangi foydalanuvchi? /
+              <Link
+                href="/register"
+                className="text-[#FF3A29] hover:text-[#E62200] ml-1"
               >
-                Telefon raqami
-              </label>
-              <Controller
-                name="phoneNumber"
-                control={control}
-                rules={{
-                  required: "Telefon raqam majburiy",
-                  validate: (value) => {
-                    const digits = value.replace(/\D/g, "");
-                    return digits.length === 12 || "To‘liq raqam kiriting";
-                  },
-                }}
-                render={({ field }) => (
+                Ro‘yxatdan o‘tish
+              </Link>
+            </p>
+
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-5 sm:space-y-6 w-full"
+            >
+              <div className="space-y-2">
+                <label
+                  htmlFor="phoneNumber"
+                  className="text-gray-400 text-[16px]"
+                >
+                  Telefon raqami
+                </label>
+                <Controller
+                  name="phoneNumber"
+                  control={control}
+                  rules={{
+                    required: "Telefon raqam majburiy",
+                    validate: (value) => {
+                      const digits = value.replace(/\D/g, "");
+                      return digits.length === 12 || "To‘liq raqam kiriting";
+                    },
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      id="phoneNumber"
+                      placeholder="+998 90 123 45 67"
+                      type="text"
+                      value={field.value}
+                      onChange={(e) => {
+                        const formatted = formatUzPhone(e.target.value);
+                        field.onChange(formatted);
+                      }}
+                      className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
+                    />
+                  )}
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.phoneNumber.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="password" className="text-gray-400 text-[16px]">
+                  Parol
+                </label>
+                <div className="flex relative items-center">
                   <Input
-                    id="phoneNumber"
-                    placeholder="+998 90 123 45 67"
-                    type="text"
-                    value={field.value}
-                    onChange={(e) => {
-                      const formatted = formatUzPhone(e.target.value);
-                      field.onChange(formatted);
-                    }}
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    {...register("password", {
+                      required: "Parol majburiy",
+                      minLength: {
+                        value: 6,
+                        message:
+                          "Parol kamida 6 ta belgidan iborat bo‘lishi kerak",
+                      },
+                    })}
                     className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
                   />
+                  <Button
+                    className="absolute right-2 bg-transparent hover:bg-transparent cursor-pointer focus:ring-0 shadow-none"
+                    type="button"
+                    size="icon"
+                    onClick={togglePasswordVisibility}
+                  >
+                    {showPassword ? (
+                      <EyeOffIcon width={30} height={30} />
+                    ) : (
+                      <EyeIcon width={30} height={30} />
+                    )}
+                  </Button>
+                </div>
+                {errors.password && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {errors.password.message}
+                  </p>
                 )}
-              />
-              {errors.phoneNumber && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.phoneNumber.message}
-                </p>
-              )}
-            </div>
+              </div>
 
-            <div className="space-y-2">
-              <label htmlFor="password" className="text-gray-400 text-[16px]">
-                Parol
-              </label>
-              <div className="flex relative items-center">
-                <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  {...register("password", {
-                    required: "Parol majburiy",
-                    minLength: {
-                      value: 6,
-                      message:
-                        "Parol kamida 6 ta belgidan iborat bo‘lishi kerak",
-                    },
-                  })}
-                  className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
-                />
+              <div className="pt-2 sm:pt-4">
                 <Button
-                  className="absolute right-2 bg-transparent hover:bg-transparent cursor-pointer focus:ring-0 shadow-none"
-                  type="button"
-                  size="icon"
-                  onClick={togglePasswordVisibility}
+                  type="submit"
+                  className="w-full bg-[#CC1F00] hover:bg-[#B31B00] text-white h-10 sm:h-12 rounded-md font-medium cursor-pointer"
                 >
-                  {showPassword ? (
-                    <EyeOffIcon width={30} height={30} />
-                  ) : (
-                    <EyeIcon width={30} height={30} />
-                  )}
+                  Kirish
                 </Button>
               </div>
-              {errors.password && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
 
-            <div className="pt-2 sm:pt-4">
-              <Button
-                type="submit"
-                className="w-full bg-[#CC1F00] hover:bg-[#B31B00] text-white h-10 sm:h-12 rounded-md font-medium cursor-pointer"
-              >
-                Kirish
-              </Button>
-            </div>
-
-            <div className="text-center">
-              <Link
-                href="/reset-password"
-                className="text-gray-400 text-xs hover:text-[#FF3A29]"
-              >
-                Parolni unutdingizmi?
-              </Link>
-            </div>
-          </form>
+              <div className="text-center">
+                <Link
+                  href="/reset-password"
+                  className="text-gray-400 text-xs hover:text-[#FF3A29]"
+                >
+                  Parolni unutdingizmi?
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
 
