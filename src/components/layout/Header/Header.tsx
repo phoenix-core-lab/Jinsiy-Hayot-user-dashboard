@@ -17,7 +17,7 @@ const Header = () => {
   }, [fetchCourse]);
   return (
     <header
-      className={`bg-[#511000] ${
+      className={`bg-[#911D00] ${
         pathname.startsWith("/courses") ? "block" : "block lg:hidden"
       }  `}
     >

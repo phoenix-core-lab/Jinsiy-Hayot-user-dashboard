@@ -18,14 +18,19 @@ type ModuleListProps = {
   ModuleId: number;
   module: Module;
   lessons: Lesson[];
+  defaultOpen?: boolean;
 };
 
-const ModuleList = ({ module, lessons }: ModuleListProps) => {
+const ModuleList = ({
+  module,
+  lessons,
+  ModuleId,
+  defaultOpen,
+}: ModuleListProps) => {
   const { currentVideo, setCurrentVideo } = useCourseStore();
 
   function updateCurrentVideo(videoUrl: string) {
     setCurrentVideo(videoUrl);
-    console.log(videoUrl);
     Cookies.set("currentVideo", videoUrl);
   }
 
@@ -35,7 +40,6 @@ const ModuleList = ({ module, lessons }: ModuleListProps) => {
   useLayoutEffect(() => {
     const currentVideo = Cookies.get("currentVideo") ?? "";
     if (currentVideo) {
-      console.log(currentVideo);
       updateCurrentVideo(currentVideo);
     }
   }, [lessons]);
@@ -47,13 +51,16 @@ const ModuleList = ({ module, lessons }: ModuleListProps) => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <Accordion type="single" collapsible>
-        <AccordionItem value="item-1">
-          <AccordionTrigger className="p-5 pt-2 pl-2 lg:pl-0">
-            <h1 className="md:text-xl xl:text-2xl font-medium">
+      <Accordion
+        type="single"
+        collapsible
+        defaultValue={defaultOpen ? String(ModuleId) : undefined}
+      >
+        <AccordionItem value={String(ModuleId)}>
+          <AccordionTrigger className="p-5 pt-0 pl-2 lg:pl-0">
+            <h1 className="md:text-xl font-medium">
               {module ? module.title : "Yuklanmoqda..."}
             </h1>
-            <p className="font-medium text-gray-400">{module.time}</p>
           </AccordionTrigger>
 
           <AccordionContent
@@ -77,7 +84,6 @@ const ModuleList = ({ module, lessons }: ModuleListProps) => {
                 transition={{ delay: index * 0.05, duration: 0.3 }}
               >
                 <VideoMiniCard
-
                   id={item.id}
                   title={item.title}
                   description={item.description || "Dars haqida ma'lumot"}

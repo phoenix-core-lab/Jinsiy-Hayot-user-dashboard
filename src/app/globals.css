@@ -194,6 +194,7 @@ body {
     color: white;
     height: 100%;
     overflow-x: hidden;
+    font-family: "DM Sans", sans-serif !important;
     scrollbar-width: none;
   }
   input:-webkit-autofill {
@@ -277,7 +278,6 @@ body {
   align-items: center;
   text-align: center;
   border-radius: 50%;
-  background: #520900;
   width: 40px;
   height: 40px;
 }

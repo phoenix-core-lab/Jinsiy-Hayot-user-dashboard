@@ -15,7 +15,7 @@ const NewsCard = ({ description, photoUrl, createdAt, mainUrl }: News) => {
     timeZone: "Asia/Tashkent",
   });
   return (
-    <div className="bg-[#300100] rounded-lg  border-gray-500 p-[10px] w-[270px]">
+    <div className="bg-[#911D00] rounded-lg  border-gray-500 p-[10px] w-[270px]">
       <div className="mb-2">
         <Image
           className="w-[100%] h-[130px] rounded-lg object-cover"

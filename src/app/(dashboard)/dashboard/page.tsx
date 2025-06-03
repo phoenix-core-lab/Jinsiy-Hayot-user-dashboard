@@ -39,7 +39,7 @@ const DashboardPage = () => {
 
   return (
     <div className="w-full mx-auto p-2">
-      <div className="bg-[#300100] p-4 rounded-lg mb-3">
+      <div className="bg-[#911D00] p-4 rounded-lg mb-3">
         <h1 className="text-[24px] font-bold mb-2">
           Xush kelibsiz {user?.fullName || "Foydalanuvchi"}!
         </h1>

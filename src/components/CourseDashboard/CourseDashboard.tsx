@@ -1,18 +1,33 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ModuleList from "../ModuleList/ModuleList";
 import { useCourseStore } from "@/store/courseStore";
 import { motion } from "framer-motion"; // ✅ Framer Motion
 import { CommentsSection } from "../CommentsSection/CommentsSection";
 import { MobileComments } from "../MobileComments/MobileComments";
+import { EyeIcon } from "lucide-react";
 
 const CourseDashboard = ({ id }: { id: string }) => {
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
-
+  const [viewers, setViewers] = useState(0);
   useEffect(() => {
     fetchCourse(id);
   }, [id, fetchCourse]);
+
+  useEffect(() => {
+    const updateViewers = () => {
+      const min = 2700;
+      const max = 3100;
+      const randomViewers = Math.floor(Math.random() * (max - min + 1)) + min;
+      setViewers(randomViewers);
+    };
+
+    updateViewers(); // начальное значение
+    const interval = setInterval(updateViewers, 5000); // обновлять каждые 5 секунд
+
+    return () => clearInterval(interval); // очистка при размонтировании
+  }, []);
 
   if (error) {
     return <div className="text-red-500 p-4">{error}</div>;
@@ -38,7 +53,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               controlsList="nodownload"
               poster={course.photoUrls?.[0] || "/placeholder.jpg"}
               controls
-              className="w-full h-full lg:rounded-lg object-cover bg-[#300100]"
+              className="w-full h-full lg:rounded-lg object-cover bg-[#911D00]"
             >
               <source
                 src={`${process.env.NEXT_PUBLIC_API_URL}/${currentVideo}`}
@@ -54,9 +69,21 @@ const CourseDashboard = ({ id }: { id: string }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
         >
-          <h2 className="text-xl md:text-2xl font-medium mb-1 md:mb-4">
-            Dars nomi: {course.modules?.[0]?.title || "N/A"}
-          </h2>
+          <div className="mb-1 md:mb-4 flex items-center justify-between">
+            <h2 className="text-xl md:text-2xl font-medium ">
+              Dars nomi: {course.modules?.[0]?.title || "N/A"}
+            </h2>
+            <div className="flex items-center gap-2  px-4 py-2 rounded-full text-white shadow-lg">
+              <div className="flex items-center gap-2">
+                <span className="font-medium">{viewers}</span>
+                <span className="text-sm text-gray-300">tomoshabinlar</span>
+              </div>
+              <div className="relative ml-1">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-[pulse_1.5s_ease-in-out_infinite]"></div>
+                <div className="absolute -inset-0.5 rounded-full bg-red-500/30 animate-[ping_1.5s_ease-in-out_infinite]"></div>
+              </div>
+            </div>
+          </div>
           <h3 className="text-lg md:text-xl font-medium mb-2 text-[#B0B0B0]">
             Kurs nomi: {course.title}
           </h3>
@@ -65,7 +92,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
           <p className="text-[#B0B0B0]">{course.description}</p>
         </motion.div>
 
-        <div className="hidden lg:block">
+        <div className="pl-[8px] hidden lg:block">
           <CommentsSection videoId={"video-1"} />
         </div>
         <MobileComments videoId={"video-1"} />
@@ -81,6 +108,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
                 ModuleId={item.id}
                 module={item}
                 lessons={item.lessons}
+                defaultOpen={index === 0}
               />
             </motion.div>
           ))}
@@ -106,6 +134,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               ModuleId={item.id}
               module={item}
               lessons={item.lessons}
+              defaultOpen={index === 0}
             />
           </motion.div>
         ))}

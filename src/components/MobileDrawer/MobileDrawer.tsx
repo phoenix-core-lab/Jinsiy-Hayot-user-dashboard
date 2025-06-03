@@ -51,7 +51,7 @@ const MobileDrawer = () => {
       </DrawerTrigger> */}
       <DrawerContent
         className={cn(
-          "right-0 top-0 h-full w-[300px] rounded-none  bg-[#300100]",
+          "right-0 top-0 h-full w-[300px] rounded-none  bg-[#911D00]",
           "fixed shadow-lg animate-in slide-in-from-left duration-300 border-none"
         )}
       >
@@ -71,8 +71,8 @@ const MobileDrawer = () => {
               <Link
                 href="/dashboard"
                 className={clsx(
-                  "px-4 py-2 rounded bg-[#300100] hover:bg-[#520900] flex items-center gap-4 font-medium",
-                  pathname === "/dashboard" && "bg-[#520900] font-bold"
+                  "px-4 py-2 rounded  hover:bg-[#F73100]/30 flex items-center gap-4 font-medium",
+                  pathname === "/dashboard" && "bg-[#F73100]/30 font-bold"
                 )}
               >
                 <HomeIcon height={20} width={20} />
@@ -83,8 +83,8 @@ const MobileDrawer = () => {
               <Link
                 href="/courses"
                 className={clsx(
-                  "px-4 py-2 rounded bg-[#300100] hover:bg-[#520900] flex items-center gap-4 font-medium",
-                  pathname === "/courses" && "bg-[#520900] font-bold"
+                  "px-4 py-2 rounded  hover:bg-[#F73100]/30 flex items-center gap-4 font-medium",
+                  pathname.startsWith("/courses") && "bg-[#F73100]/30 font-bold"
                 )}
               >
                 <BookOpenIcon width={20} height={20} />
@@ -95,8 +95,8 @@ const MobileDrawer = () => {
               <Link
                 href="/settings"
                 className={clsx(
-                  "px-4 py-2 rounded bg-[#300100] hover:bg-[#520900] flex items-center gap-4 font-medium",
-                  pathname === "/settings" && "bg-[#520900] font-bold"
+                  "px-4 py-2 rounded  hover:bg-[#F73100]/30 flex items-center gap-4 font-medium",
+                  pathname === "/settings" && "bg-[#F73100]/30 font-bold"
                 )}
               >
                 <SettingsIcon width={20} height={20} />
@@ -107,7 +107,7 @@ const MobileDrawer = () => {
               <Link
                 href="https://j-hayot.org"
                 className={clsx(
-                  "px-4 py-2 rounded hover:bg-[#520900] flex items-center gap-4 font-medium"
+                  "px-4 py-2 rounded hover:bg-[#F73100]/30 flex items-center gap-4 font-medium"
                 )}
               >
                 <SquareArrowOutUpRight width={20} height={20} />
@@ -119,7 +119,7 @@ const MobileDrawer = () => {
         <DrawerFooter>
           <div className="userInfo">
             <div className="userInfoWrapper">
-              <div className="userIcon">
+              <div className="userIcon bg-[#F73100]/30">
                 <span className="spanIcon">
                   {user ? getInitials(user.fullName) : "?"}
                 </span>

@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { ChevronDownIcon } from "lucide-react";
-import { motion, useInView } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { SendHorizonalIcon } from "lucide-react";
+
 interface CommentsSectionProps {
   videoId: string;
 }
@@ -17,25 +18,66 @@ interface Comment {
 export const CommentsSection: React.FC<CommentsSectionProps> = ({
   videoId,
 }) => {
-  const [comments, setComments] = useState<Comment[]>([]);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const [allComments, setAllComments] = useState<Comment[]>([]);
+  const [visibleComments, setVisibleComments] = useState<Comment[]>([]);
+  const [nextIndex, setNextIndex] = useState(0);
+  const [inputText, setInputText] = useState("");
+  const [username, setUsername] = useState("Вы");
 
   useEffect(() => {
     const fetchComments = async () => {
       const res = await fetch("/data/comments.json");
       const data: Comment[] = await res.json();
 
-      const videoComments = data.filter(
-        (comment) => comment.videoId === videoId
-      );
+      const videoComments = data.filter((c) => c.videoId === videoId);
       const shuffled = [...videoComments].sort(() => Math.random() - 0.5);
 
-      setComments(shuffled);
+      setAllComments(shuffled);
+      setVisibleComments(shuffled.slice(0, 3));
+      setNextIndex(3);
     };
 
     fetchComments();
   }, [videoId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (allComments.length === 0) return;
+
+      const newComment = allComments[nextIndex % allComments.length];
+
+      // Обновление с задержкой на 1 тик, чтобы избежать мерцания
+      setTimeout(() => {
+        setVisibleComments((prev) => {
+          const updated = [newComment, ...prev];
+          return updated.slice(0, 5);
+        });
+      }, 0);
+
+      setNextIndex((prev) => (prev + 1) % allComments.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [allComments, nextIndex]);
+
+  const handleSubmit = () => {
+    if (!inputText.trim()) return;
+
+    const newComment: Comment = {
+      id: Date.now(),
+      videoId,
+      username,
+      text: inputText.trim(),
+      timestamp: new Date().toISOString(),
+    };
+
+    setVisibleComments((prev) => {
+      const updated = [newComment, ...prev];
+      return updated.slice(0, 5);
+    });
+
+    setInputText("");
+  };
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -49,43 +91,67 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
   };
 
   return (
-    <div ref={ref}>
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-bold text-white">
-          Комментарии ({comments.length})
-        </h3>
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-bold text-white">Комментарии</h3>
       </div>
 
-      <div className=" overflow-y-auto custom-scrollbar pr-2">
-        {comments.map((comment, index) => (
-          <motion.div
-            key={comment.id}
-            role="listitem"
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: index * 0.05, duration: 0.3 }}
-            className="backdrop-blur rounded-lg p-3 hover:bg-white/10 transition-colors duration-200"
-          >
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-medium">
-                  {comment.username.charAt(0).toUpperCase()}
-                </span>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex justify-between items-center ">
-                  <div className="font-medium text-white truncate">
-                    {comment.username}
-                  </div>
-                  <div className="text-sm text-gray-400 flex-shrink-0">
-                    {formatDate(comment.timestamp)}
-                  </div>
+      <div className="relative mb-6">
+        <input
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSubmit();
+          }}
+          placeholder="Написать комментарий..."
+          className="w-full pr-10 px-4 py-3 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none"
+        />
+        <button
+          onClick={handleSubmit}
+          className="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/20 transition"
+        >
+          <SendHorizonalIcon className="text-white w-5 h-5" />
+        </button>
+      </div>
+
+      <div className="flex flex-col gap-2 overflow-hidden">
+        <AnimatePresence initial={false}>
+          {visibleComments.map((comment) => (
+            <motion.div
+              layout
+              key={comment.id + "-" + comment.timestamp}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{
+                opacity: 0,
+                y: 20,
+                transition: { duration: 0.3, delay: 0.1 }, // задержка выхода
+              }}
+              transition={{ duration: 0.4 }}
+              className="backdrop-blur bg-transparent rounded-lg p-3 hover:bg-white/10 transition-colors duration-200"
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-medium">
+                    {comment.username.charAt(0).toUpperCase()}
+                  </span>
                 </div>
-                <p className="text-gray-200 break-words">{comment.text}</p>
+                <div className="flex-1 min-w-0">
+                  <div className="flex justify-between items-center">
+                    <div className="font-medium text-white truncate">
+                      {comment.username}
+                    </div>
+                    <div className="text-sm text-gray-400 flex-shrink-0">
+                      {formatDate(comment.timestamp)}
+                    </div>
+                  </div>
+                  <p className="text-gray-200 break-words">{comment.text}</p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );

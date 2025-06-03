@@ -43,8 +43,8 @@ export const VideoMiniCard = ({
   return (
     <div
       className={clsx({
-        "flex gap-3 cursor-pointer rounded-sm p-1 hover:bg-[#520900]": true,
-        "bg-[#520900]": isActive,
+        "flex gap-3 cursor-pointer rounded-sm p-1 hover:bg-[#911D00]": true,
+        "bg-[#911D00]": isActive,
       })}
     >
       <div className="w-[160px] h-[90px] bg-[#484848] rounded-sm relative">

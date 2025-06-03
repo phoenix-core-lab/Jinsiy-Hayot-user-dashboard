@@ -48,7 +48,7 @@ export default function SettingsPage() {
       {/* Main Content */}
       <div className="">
         {/* Welcome Section */}
-        <div className="bg-[#300100] p-4 rounded-lg mb-3">
+        <div className="bg-[#911D00] p-4 rounded-lg mb-3">
           <h1 className="text-[24px] font-bold mb-2">
             Shaxsiy ma&apos;lumotlar
           </h1>
@@ -60,7 +60,7 @@ export default function SettingsPage() {
 
         {/* Settings Content */}
         <div className="flex-1 overflow-auto ">
-          <div className="bg-[#300100] rounded-lg p-4 sm:p-6">
+          <div className="bg-[#911D00] rounded-lg p-4 sm:p-6">
             <AnimatePresence mode="wait">
               {profile ? (
                 <motion.div
@@ -82,9 +82,9 @@ export default function SettingsPage() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex-1 space-y-4">
-                    <div className="h-10 bg-[#520900] rounded-[9px]"></div>
-                    <div className="h-10 bg-[#520900] rounded-[9px]"></div>
-                    <div className="h-10 bg-[#520900] rounded-[9px]"></div>
+                    <div className="h-10 bg-[#F73100]/30 rounded-[9px]"></div>
+                    <div className="h-10 bg-[#F73100]/30 rounded-[9px]"></div>
+                    <div className="h-10 bg-[#F73100]/30 rounded-[9px]"></div>
                   </div>
                 </motion.div>
               )}

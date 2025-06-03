@@ -17,7 +17,7 @@ export const MobileComments: React.FC<MobileCommentsProps> = ({ videoId }) => {
   return (
     <div className="block lg:hidden">
       <Sheet>
-        <SheetTrigger className="bg-gradient-to-br from-[#3d0000] via-[#1e0000] to-[#0a0000] pt-2 pb-6 pl-2 rounded-lg w-[calc(100%-16px)] mx-[8px] cursor-pointer  text-start font-medium">
+        <SheetTrigger className="bg-[#F73100]/30 pt-2 pb-6 pl-2 rounded-lg w-[calc(100%-16px)] mx-[8px] cursor-pointer  text-start font-medium">
           Комментарии
         </SheetTrigger>
 

@@ -24,14 +24,14 @@ export function SettingsForm({ initialData }: SettingsFormProps) {
           <label className="block text-sm font-medium mb-1">
             To&apos;liq ism
           </label>
-          <p className="w-full bg-[#520900] border-none rounded-[9px] p-2 text-white">
+          <p className="w-full bg-[#F73100]/30 border-none rounded-[9px] p-2 text-white">
             {initialData.fullName}
           </p>
         </div>
 
         <div>
           <label className="block text-sm font-medium mb-1">Raqam</label>
-          <p className="w-full bg-[#520900] border-none rounded-[9px] p-2 text-white">
+          <p className="w-full bg-[#F73100]/30 border-none rounded-[9px] p-2 text-white">
             {initialData.phoneNumber}
           </p>
         </div>
@@ -40,14 +40,14 @@ export function SettingsForm({ initialData }: SettingsFormProps) {
           <label className="block text-sm font-medium mb-1">
             Planformada ro&apos;yxatdan o&apos;tilgan sana
           </label>
-          <p className="w-full bg-[#520900] border-none rounded-[9px] p-2 text-white">
+          <p className="w-full bg-[#F73100]/30 border-none rounded-[9px] p-2 text-white">
             {registerDate}
           </p>
         </div>
 
         {/* <div>
           <label className="block text-sm font-medium mb-1">Email</label>
-          <p className="w-full bg-[#520900] border-none rounded-[9px] p-2 text-white">
+          <p className="w-full bg-[#F73100]/30 border-none rounded-[9px] p-2 text-white">
             {initialData.email}
           </p>
         </div> */}

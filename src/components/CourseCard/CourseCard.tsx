@@ -27,25 +27,13 @@ export function CourseCard({
 
   return (
     <div
-      className="relative overflow-hidden rounded-2xl transition-all duration-500 w-[300px] h-full"
+      className="relative overflow-hidden rounded-2xl transition-all duration-500 w-[300px] h-full bg-[#911D00]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Gradient background with glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#3d0000] via-[#1e0000] to-[#0a0000] z-0">
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-500/30 via-transparent to-transparent"></div>
-      </div>
-
-      {/* Red glow effect that appears on hover */}
-      <div
-        className={`absolute -inset-1 bg-red-500/20 blur-xl transition-opacity duration-700 ${
-          isHovered ? "opacity-70" : "opacity-0"
-        } z-0`}
-      ></div>
-
       <div className="relative z-10 p-[10px] h-full flex flex-col">
         {/* Course Image with hover effect */}
-        <div className="relative overflow-hidden rounded-xl mb-4 bg-gradient-to-br from-[#2a0000] to-black">
+        <div className="relative overflow-hidden rounded-xl mb-4">
           <div
             className={`absolute inset-0 bg-red-500/10 z-10 transition-opacity duration-300 ${
               isHovered ? "opacity-100" : "opacity-0"

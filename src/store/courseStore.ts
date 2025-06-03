@@ -71,29 +71,29 @@ export const useCourseStore = create<CourseState>((set) => ({
   currentVideo: "/",
   error: null,
   fetchCourse: async (id: string) => {
-    try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/courses/bought/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("access_token")}`,
-          },
-        }
-      );
-      set({
-        course: response.data,
-        currentVideo: response.data.modules?.[0]?.lessons?.[0]?.videoUrl || "/",
-        error: null,
-      });
-    } catch (error: unknown) {
-      console.error("Failed to fetch course", error);
-      set({ error: "Failed to load course data. Please try again." });
-    }
-    // set({
-    //   course: mockCourse,
-    //   currentVideo: mockCourse.modules[0].lessons[0].videoUrl || "/",
-    //   error: null,
-    // });
+    // try {
+    //   const response = await axios.get(
+    //     `${process.env.NEXT_PUBLIC_API_URL}/courses/bought/${id}`,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${Cookies.get("access_token")}`,
+    //       },
+    //     }
+    //   );
+    //   set({
+    //     course: response.data,
+    //     currentVideo: response.data.modules?.[0]?.lessons?.[0]?.videoUrl || "/",
+    //     error: null,
+    //   });
+    // } catch (error: unknown) {
+    //   console.error("Failed to fetch course", error);
+    //   set({ error: "Failed to load course data. Please try again." });
+    // }
+    set({
+      course: mockCourse,
+      currentVideo: mockCourse.modules[0].lessons[0].videoUrl || "/",
+      error: null,
+    });
   },
   setCurrentVideo: (videoUrl: string) => set({ currentVideo: videoUrl }),
 }));
