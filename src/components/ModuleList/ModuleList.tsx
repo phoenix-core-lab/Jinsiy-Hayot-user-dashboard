@@ -56,9 +56,10 @@ const ModuleList = ({
         defaultValue={defaultOpen ? String(ModuleId) : undefined}
       >
         <AccordionItem value={String(ModuleId)}>
-          <AccordionTrigger className="p-5 pt-0 pl-2 lg:pl-0">
-            <h1 className="md:text-xl font-medium">
-              {module ? module.title : "Yuklanmoqda..."}
+          <AccordionTrigger className="py-2  pl-4 bg-[#a8000053]">
+            <h1 className="md:text-lg font-medium">
+              {/* {module ? module.title : "Yuklanmoqda..."} */}
+              How to suck cock in 5 minutes       How to suck cock in 5 minutes     How to suck cock in 5 minutes
             </h1>
           </AccordionTrigger>
 

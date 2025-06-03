@@ -98,7 +98,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
           <CommentsSection videoId={"video-1"} />
         </div>
         <MobileComments videoId={"video-1"} />
-        <div className="lg:hidden mt-3 mb-3">
+        <div className="lg:hidden mt-3 mb-3 flex flex-col gap-1 px-2">
           {course.modules.map((item, index) => (
             <motion.div
               key={item.id}
@@ -118,7 +118,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
       </div>
 
       <div
-        className="hidden lg:block lg:w-[25%] h-full rounded-lg text-white overflow-y-auto"
+        className="hidden lg:flex lg:w-[25%] h-full  text-white overflow-y-auto  flex-col gap-1"
         style={{
           scrollBehavior: "smooth",
           scrollbarWidth: "thin",

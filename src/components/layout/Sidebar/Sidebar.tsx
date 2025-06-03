@@ -84,7 +84,7 @@ const Sidebar = () => {
           </li>
           <li>
             <Link
-              href="https://j-hayot.org"
+              href="https://jinsiy-hayot.org"
               className={clsx(
                 "px-4 py-2 rounded hover:bg-[#F73100]/30 flex items-center gap-4 font-medium"
               )}
