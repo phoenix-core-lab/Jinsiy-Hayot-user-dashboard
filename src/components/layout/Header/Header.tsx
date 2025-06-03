@@ -33,7 +33,7 @@ const Header = () => {
             <Image src="/logo.svg" alt="logo" width={111} height={30} />
           </Link>
           <h3 className="hidden lg:block text-lg font-semibold">
-            Kurs:{course?.title || "Yuklanmoqda..."}
+            Kurs: {course?.title || "Yuklanmoqda..."}
           </h3>
         </div>
       </div>

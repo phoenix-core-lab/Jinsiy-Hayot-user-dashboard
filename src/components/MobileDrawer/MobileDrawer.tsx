@@ -56,7 +56,7 @@ const MobileDrawer = () => {
         )}
       >
         <DrawerHeader className="flex items-center justify-between flex-row border-b border-[#9CA3AF]">
-          <Image src="/logo.svg" alt="logo" width={159} height={41} />
+          <Image src="/logo.svg" alt="logo" width={111} height={30} />
           <button
             onClick={() => setOpen(false)}
             className="bg-transparent cursor-pointer"

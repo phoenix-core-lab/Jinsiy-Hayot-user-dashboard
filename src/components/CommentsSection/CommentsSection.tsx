@@ -22,7 +22,7 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
   const [visibleComments, setVisibleComments] = useState<Comment[]>([]);
   const [nextIndex, setNextIndex] = useState(0);
   const [inputText, setInputText] = useState("");
-  const [username, setUsername] = useState("Вы");
+  const [username, setUsername] = useState("Siz");
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -93,7 +93,7 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-bold text-white">Комментарии</h3>
+        <h3 className="text-xl font-bold text-white">Sharhlar</h3>
       </div>
 
       <div className="relative mb-6">

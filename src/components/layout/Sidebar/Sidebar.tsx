@@ -43,7 +43,7 @@ const Sidebar = () => {
     >
       <div>
         <Link className="px-4 py-2 block" href="/dashboard">
-          <Image src="/logo.svg" alt="logo" width={159} height={41} />
+          <Image src="/logo.svg" alt="logo" width={111} height={30} />
         </Link>
         <ul className="flex flex-col gap-1 mt-4">
           <li>
