@@ -6,12 +6,15 @@ import { Toaster } from "sonner";
 const dm_sans = DM_Sans({
   variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // добавь нужные веса
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
   title: "Jinsiy Hayot",
   description: "",
+  icons: {
+    icon: { url: "/favicon.svg", type: "image/svg+xml" },
+  },
 };
 
 export default function RootLayout({

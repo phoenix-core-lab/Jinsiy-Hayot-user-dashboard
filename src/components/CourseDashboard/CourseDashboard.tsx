@@ -6,7 +6,6 @@ import { useCourseStore } from "@/store/courseStore";
 import { motion } from "framer-motion"; // ✅ Framer Motion
 import { CommentsSection } from "../CommentsSection/CommentsSection";
 import { MobileComments } from "../MobileComments/MobileComments";
-import { EyeIcon } from "lucide-react";
 
 const CourseDashboard = ({ id }: { id: string }) => {
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
@@ -51,6 +50,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               src={`${process.env.NEXT_PUBLIC_API_URL}/${currentVideo}`}
               key={currentVideo}
               controlsList="nodownload"
+              onContextMenu={(e) => e.preventDefault()}
               poster={course.photoUrls?.[0] || "/placeholder.jpg"}
               controls
               className="w-full h-full lg:rounded-lg object-cover bg-[#911D00]"
@@ -70,7 +70,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
           transition={{ delay: 0.2, duration: 0.4 }}
         >
           <div className="mb-1 md:mb-4 flex items-center justify-between">
-            <h2 className="text-xl md:text-2xl font-medium ">
+            <h2 className="text-lg md:text-xl font-medium ">
               Dars nomi: {course.modules?.[0]?.title || "N/A"}
             </h2>
             <div className="flex items-center gap-2  px-4 py-2 rounded-full text-white shadow-lg">
@@ -84,11 +84,13 @@ const CourseDashboard = ({ id }: { id: string }) => {
               </div>
             </div>
           </div>
-          <h3 className="text-lg md:text-xl font-medium mb-2 text-[#B0B0B0]">
+          {/* <h3 className="text-lg md:text-xl font-medium mb-2 text-[#B0B0B0]">
             Kurs nomi: {course.title}
-          </h3>
+          </h3> */}
           <p className="text-[#B0B0B0]">Muallif: {course.author}</p>
-          <p className="mb-4 text-[#B0B0B0]">Davomiyligi: {course.time}</p>
+          <p className="mb-2 lg:mb-4 text-[#B0B0B0]">
+            Davomiyligi: {course.time}
+          </p>
           <p className="text-[#B0B0B0]">{course.description}</p>
         </motion.div>
 

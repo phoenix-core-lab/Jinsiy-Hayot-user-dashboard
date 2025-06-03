@@ -52,7 +52,7 @@ export default function SettingsPage() {
           <h1 className="text-[24px] font-bold mb-2">
             Shaxsiy ma&apos;lumotlar
           </h1>
-          <p className="text-[16px] font-normal text-[#9CA3AF]">
+          <p className="text-[16px] font-normal text-[#FFD6D6]">
             Shaxsiy kabinetingizga hush kelibsiz. Bu yerda siz bizning barcha
             ma&apos;lumotlaringizni kuztib borishingiz mumkin
           </p>

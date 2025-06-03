@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils"; // если у тебя есть функци�
 import Image from "next/image";
 import {
   BookOpenIcon,
-  HomeIcon,
   LogOut,
   SettingsIcon,
   SquareArrowOutUpRight,
@@ -67,7 +66,7 @@ const MobileDrawer = () => {
         <div className="flex-1 overflow-auto p-4">
           <DrawerTitle className="sr-only">Drawer Title</DrawerTitle>
           <ul className="flex flex-col gap-1">
-            <li>
+            {/* <li>
               <Link
                 href="/dashboard"
                 className={clsx(
@@ -78,7 +77,7 @@ const MobileDrawer = () => {
                 <HomeIcon height={20} width={20} />
                 Asosiy
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 href="/courses"

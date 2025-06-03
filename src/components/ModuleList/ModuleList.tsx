@@ -12,8 +12,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BonusVideoCard } from "../BonusVideoCard/BonusVideoCard";
-import { PdfLessonCard } from "../PDFLessonCard/PDFLessonCard";
+
 type ModuleListProps = {
   ModuleId: number;
   module: Module;

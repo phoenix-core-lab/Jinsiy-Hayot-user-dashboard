@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import clsx from "clsx";
 import {
   BookOpenIcon,
-  HomeIcon,
+
   LogOut,
   SettingsIcon,
   SquareArrowOutUpRight,
@@ -46,7 +46,7 @@ const Sidebar = () => {
           <Image src="/logo.svg" alt="logo" width={111} height={30} />
         </Link>
         <ul className="flex flex-col gap-1 mt-4">
-          <li>
+          {/* <li>
             <Link
               href="/dashboard"
               className={clsx(
@@ -57,7 +57,7 @@ const Sidebar = () => {
               <HomeIcon height={20} width={20} />
               Asosiy
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href="/courses"

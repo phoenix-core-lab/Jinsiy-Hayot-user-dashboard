@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SendHorizonalIcon } from "lucide-react";
 
@@ -22,7 +22,7 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
   const [visibleComments, setVisibleComments] = useState<Comment[]>([]);
   const [nextIndex, setNextIndex] = useState(0);
   const [inputText, setInputText] = useState("");
-  const [username, setUsername] = useState("Siz");
+  const username = "Siz";
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -41,23 +41,29 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
   }, [videoId]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (allComments.length === 0) return;
+    let timeoutId: NodeJS.Timeout;
 
-      const newComment = allComments[nextIndex % allComments.length];
+    const scheduleNextComment = () => {
+      const delay = Math.floor(Math.random() * (20000 - 4000 + 1)) + 4000; // от 4000 до 20000 мс
 
-      // Обновление с задержкой на 1 тик, чтобы избежать мерцания
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
+        if (allComments.length === 0) return;
+
+        const newComment = allComments[nextIndex % allComments.length];
+
         setVisibleComments((prev) => {
           const updated = [newComment, ...prev];
           return updated.slice(0, 5);
         });
-      }, 0);
 
-      setNextIndex((prev) => (prev + 1) % allComments.length);
-    }, 3000);
+        setNextIndex((prev) => (prev + 1) % allComments.length);
+        scheduleNextComment(); // запланировать следующий комментарий
+      }, delay);
+    };
 
-    return () => clearInterval(interval);
+    scheduleNextComment(); // первый запуск
+
+    return () => clearTimeout(timeoutId); // очистка при размонтировании
   }, [allComments, nextIndex]);
 
   const handleSubmit = () => {
@@ -79,16 +85,16 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
     setInputText("");
   };
 
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleString("ru-RU", {
-      day: "numeric",
-      month: "numeric",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
+  // const formatDate = (dateString: string): string => {
+  //   const date = new Date(dateString);
+  //   return date.toLocaleString("ru-RU", {
+  //     day: "numeric",
+  //     month: "numeric",
+  //     year: "numeric",
+  //     hour: "2-digit",
+  //     minute: "2-digit",
+  //   });
+  // };
 
   return (
     <div>
@@ -129,7 +135,7 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
                 transition: { duration: 0.3, delay: 0.1 }, // задержка выхода
               }}
               transition={{ duration: 0.4 }}
-              className="backdrop-blur bg-transparent rounded-lg p-3 hover:bg-white/10 transition-colors duration-200"
+              className="backdrop-blur bg-transparent rounded-lg p-1 lg:p-3 hover:bg-white/10 transition-colors duration-200"
             >
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
@@ -142,9 +148,9 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
                     <div className="font-medium text-white truncate">
                       {comment.username}
                     </div>
-                    <div className="text-sm text-gray-400 flex-shrink-0">
+                    {/* <div className="text-sm text-gray-400 flex-shrink-0">
                       {formatDate(comment.timestamp)}
-                    </div>
+                    </div> */}
                   </div>
                   <p className="text-gray-200 break-words">{comment.text}</p>
                 </div>

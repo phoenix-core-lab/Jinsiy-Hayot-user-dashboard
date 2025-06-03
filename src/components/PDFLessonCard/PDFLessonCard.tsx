@@ -1,13 +1,13 @@
-import React, { createElement } from 'react'
-import clsx from 'clsx'
-import { DownloadIcon, FileTextIcon } from 'lucide-react'
+import React from "react";
+import clsx from "clsx";
+import { DownloadIcon, FileTextIcon } from "lucide-react";
 interface PdfLessonCardProps {
-  title: string
-  description: string
-  isActive?: boolean
-  id: number
-  onClick?: () => void
-  items: string[]
+  title: string;
+  description: string;
+  isActive?: boolean;
+  id: number;
+  onClick?: () => void;
+  items: string[];
 }
 export const PdfLessonCard = ({
   title,
@@ -17,31 +17,31 @@ export const PdfLessonCard = ({
   items,
 }: PdfLessonCardProps) => {
   const handleDownload = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    event.stopPropagation()
+    event.preventDefault();
+    event.stopPropagation();
     // Using a placeholder API URL since we don't have the actual env variable
-    const apiUrl = process.env.REACT_APP_API_URL || 'https://api.example.com'
-    const fileUrl = `${apiUrl}/${items[0]}`
+    const apiUrl = process.env.REACT_APP_API_URL || "https://api.example.com";
+    const fileUrl = `${apiUrl}/${items[0]}`;
     try {
-      const response = await fetch(fileUrl)
-      const blob = await response.blob()
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = fileUrl.split('/').pop() || 'document.pdf'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      window.URL.revokeObjectURL(url)
+      const response = await fetch(fileUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileUrl.split("/").pop() || "document.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Download failed:', error)
+      console.error("Download failed:", error);
     }
-  }
+  };
   return (
     <div
       className={clsx({
-        'flex gap-3 cursor-pointer rounded-sm p-1 hover:bg-[#09005e]': true,
-        'bg-[#09005e]': isActive,
+        "flex gap-3 cursor-pointer rounded-sm p-1 hover:bg-[#09005e]": true,
+        "bg-[#09005e]": isActive,
       })}
     >
       <div className="w-[160px] h-[90px] bg-[#484848] rounded-sm relative flex items-center justify-center">
@@ -65,5 +65,5 @@ export const PdfLessonCard = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
