@@ -15,10 +15,22 @@ const CoursesPage = () => {
 
   if (!course?.paid) {
     return (
-      <div className="w-full mx-auto h-full lg:p-2">
-        <h1 className="text-[24px] font-bold mb-2">
-          Sizda hali kurs yo&apos;q !
+      <div className="flex flex-col items-center justify-center h-full">
+        <h1 className="text-2xl font-bold text-center mt-10">
+          Siz kursni sotib olmadingiz
         </h1>
+        <p className="text-center mt-4">
+          Kursga kirish uchun avval uni sotib olishingiz kerak.
+        </p>
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={() => router.push("https://jinsiy-hayot.org/")}
+            type="button"
+            className="px-6 py-2 bg-[#730000] text-white rounded hover:bg-blue-700 transition"
+          >
+            Kursni sotib olish
+          </button>
+        </div>
       </div>
     );
   }
