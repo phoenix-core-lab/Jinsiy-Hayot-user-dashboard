@@ -48,11 +48,10 @@ export default function LoginComponent() {
         path: "/",
       });
 
-      // Удаляем token из URL
       const cleanUrl = window.location.origin + window.location.pathname;
       window.history.replaceState({}, "", cleanUrl);
+      router.push("/courses");
     }
-    router.push("/courses");
   }, []);
 
   const onSubmit: SubmitHandler<UserFormInput> = async (data) => {
