@@ -6,10 +6,17 @@ import { useCourseStore } from "@/store/courseStore";
 import { motion } from "framer-motion"; // ✅ Framer Motion
 import { CommentsSection } from "../CommentsSection/CommentsSection";
 import { MobileComments } from "../MobileComments/MobileComments";
+import { useUserStore } from "@/store/userStore";
+import { useRouter } from "next/navigation";
+
 
 const CourseDashboard = ({ id }: { id: string }) => {
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
+  const { user } = useUserStore()
   const [viewers, setViewers] = useState(0);
+  const router = useRouter()
+
+
   useEffect(() => {
     fetchCourse(id);
   }, [id, fetchCourse]);
@@ -36,6 +43,10 @@ const CourseDashboard = ({ id }: { id: string }) => {
     return <div className="p-4">Yuklanmoqda...</div>;
   }
 
+  if ((!user)) {
+    router.push("/")
+  }
+
   return (
     <div className="flex flex-col w-full gap-3 lg:flex-row mx-auto h-full lg:p-2">
       <div className="lg:w-[75%]">
@@ -51,9 +62,10 @@ const CourseDashboard = ({ id }: { id: string }) => {
               key={currentVideo}
               controlsList="nodownload"
               onContextMenu={(e) => e.preventDefault()}
-              poster={course.photoUrls?.[0] || "/placeholder.jpg"}
+              poster={"/course.png"}
               controls
               className="w-full h-full lg:rounded-lg object-cover bg-[#911D00] "
+
             >
               <source
                 src={`${process.env.NEXT_PUBLIC_API_URL}/${currentVideo}`}

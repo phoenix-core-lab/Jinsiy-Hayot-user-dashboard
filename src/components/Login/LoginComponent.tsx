@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -34,6 +34,27 @@ export default function LoginComponent() {
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
   const router = useRouter();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const token = searchParams.get("token");
+
+    const isValidToken = (token: string) =>
+      /^[a-zA-Z0-9._-]{20,300}$/.test(token || "");
+
+    if (token && isValidToken(token)) {
+      Cookies.set("access_token", token, {
+        expires: 7,
+        path: "/",
+      });
+
+      // Удаляем token из URL
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, "", cleanUrl);
+    }
+    router.push("/courses");
+  }, []);
+
   const onSubmit: SubmitHandler<UserFormInput> = async (data) => {
     try {
       const response = await axios.post(
@@ -50,22 +71,18 @@ export default function LoginComponent() {
       );
 
       const token = response.data.access_token;
-
       Cookies.set("access_token", token, { expires: 7, path: "/" });
 
-      console.log("Login successful:", token);
       router.push("/courses");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        if (axios.isAxiosError(error)) {
-          if (error.status === 401) {
-            toast.error("Parolda xatolik!");
-          }
-          toast.error("Bunday foydalanuvchi yo'k yoki server xatoligi!");
-        } else {
-          console.error("Unexpected error:", error);
-          toast("Nomaʼlum xatolik yuz berdi.");
+        if (error.status === 401) {
+          toast.error("Parolda xatolik!");
         }
+        toast.error("Bunday foydalanuvchi yo'k yoki server xatoligi!");
+      } else {
+        console.error("Unexpected error:", error);
+        toast("Nomaʼlum xatolik yuz berdi.");
       }
     }
   };
@@ -127,12 +144,9 @@ export default function LoginComponent() {
                       value={field.value}
                       onChange={(e) => {
                         let input = e.target.value;
-
-                        // Гарантируем, что +998 остаётся в начале
                         if (!input.startsWith("+998 ")) {
                           input = "+998 ";
                         }
-
                         field.onChange(formatUzPhone(input));
                       }}
                       className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
