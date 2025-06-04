@@ -53,7 +53,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               onContextMenu={(e) => e.preventDefault()}
               poster={course.photoUrls?.[0] || "/placeholder.jpg"}
               controls
-              className="w-full h-full lg:rounded-lg object-cover bg-[#911D00]"
+              className="w-full h-full lg:rounded-lg object-cover bg-[#911D00] "
             >
               <source
                 src={`${process.env.NEXT_PUBLIC_API_URL}/${currentVideo}`}
@@ -114,6 +114,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               />
             </motion.div>
           ))}
+
         </div>
       </div>
 

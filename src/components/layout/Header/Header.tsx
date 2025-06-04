@@ -29,7 +29,7 @@ const Header = () => {
           >
             <MenuIcon width={25} height={25} />
           </button>
-          <Link href="/dashboard">
+          <Link href="/courses">
             <Image src="/logo.svg" alt="logo" width={111} height={30} />
           </Link>
           <h3 className="hidden lg:block text-lg font-semibold">

@@ -9,6 +9,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import axios from "axios";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { formatUzPhone } from "@/utils/formatUzPhone";
 
 interface UserFormInput {
   phoneNumber: string;
@@ -27,7 +28,7 @@ export default function RegisterComponent() {
     formState: { errors },
   } = useForm<UserFormInput>({
     defaultValues: {
-      phoneNumber: "",
+      phoneNumber: "+998 ",
       password: "",
       confirm_password: "",
       fullName: "",
@@ -45,15 +46,6 @@ export default function RegisterComponent() {
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword(!showConfirmPassword);
 
-  const formatUzPhone = (value: string) => {
-    const digits = value.replace(/\D/g, "");
-    const trimmed = digits.startsWith("998") ? digits.slice(3) : digits;
-    return (
-      "+998 " +
-      trimmed.replace(/^(\d{2})(\d{3})(\d{2})(\d{0,2}).*/, "$1 $2 $3 $4").trim()
-    );
-  };
-
   const handleRegister: SubmitHandler<UserFormInput> = async (data) => {
     console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
 
@@ -67,7 +59,7 @@ export default function RegisterComponent() {
         phoneNumber: submitData.phoneNumber.replace(/[^\d+]/g, ""),
       });
 
-      toast.success("Tasdiqlash kodi yuborildi");
+      toast.success("Tasdiqlash kodi telegram orqali yuborildi");
       setIsVerificationStep(true);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -96,7 +88,7 @@ export default function RegisterComponent() {
       );
 
       toast.success("Ro'yxatdan muvaffaqiyatli o'tdingiz!");
-      router.push("/dashboard");
+      router.push("/courses");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data?.message || "Xatolik kodda");
@@ -194,13 +186,23 @@ export default function RegisterComponent() {
                         type="text"
                         placeholder="+998 90 123 45 67"
                         value={field.value}
-                        onChange={(e) =>
-                          field.onChange(formatUzPhone(e.target.value))
-                        }
+                        onChange={(e) => {
+                          let input = e.target.value;
+
+                          // Гарантируем, что +998 остаётся в начале
+                          if (!input.startsWith("+998 ")) {
+                            input = "+998 ";
+                          }
+
+                          field.onChange(formatUzPhone(input));
+                        }}
                         className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
                       />
                     )}
                   />
+                  <p className="text-[12px] text-white mt-1">
+                    Telegram mavjud bo‘lgan raqamni kiriting
+                  </p>
                   {errors.phoneNumber && (
                     <p className="text-red-500 text-xs mt-1">
                       {errors.phoneNumber.message}

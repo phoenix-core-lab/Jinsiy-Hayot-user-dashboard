@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { toast } from "sonner";
+import { formatUzPhone } from "@/utils/formatUzPhone";
 
 interface UserFormInput {
   phoneNumber: string;
@@ -24,7 +25,7 @@ export default function LoginComponent() {
     formState: { errors },
   } = useForm<UserFormInput>({
     defaultValues: {
-      phoneNumber: "",
+      phoneNumber: "+998 ",
       password: "",
     },
   });
@@ -53,7 +54,7 @@ export default function LoginComponent() {
       Cookies.set("access_token", token, { expires: 7, path: "/" });
 
       console.log("Login successful:", token);
-      router.push("/courses/1");
+      router.push("/courses");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         if (axios.isAxiosError(error)) {
@@ -67,15 +68,6 @@ export default function LoginComponent() {
         }
       }
     }
-  };
-
-  const formatUzPhone = (value: string) => {
-    const digits = value.replace(/\D/g, "");
-    const trimmed = digits.startsWith("998") ? digits.slice(3) : digits;
-    return (
-      "+998 " +
-      trimmed.replace(/^(\d{2})(\d{3})(\d{2})(\d{0,2}).*/, "$1 $2 $3 $4").trim()
-    );
   };
 
   return (
@@ -134,8 +126,14 @@ export default function LoginComponent() {
                       type="text"
                       value={field.value}
                       onChange={(e) => {
-                        const formatted = formatUzPhone(e.target.value);
-                        field.onChange(formatted);
+                        let input = e.target.value;
+
+                        // Гарантируем, что +998 остаётся в начале
+                        if (!input.startsWith("+998 ")) {
+                          input = "+998 ";
+                        }
+
+                        field.onChange(formatUzPhone(input));
                       }}
                       className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
                     />
