@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { DownloadIcon, FileTextIcon } from "lucide-react";
+import { FileTextIcon } from "lucide-react";
 interface PdfLessonCardProps {
   title: string;
 

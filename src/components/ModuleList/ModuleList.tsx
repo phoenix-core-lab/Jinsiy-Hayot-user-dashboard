@@ -13,7 +13,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { PdfLessonCard } from "../PDFLessonCard/PDFLessonCard";
-import { BonusVideoCard } from "../BonusVideoCard/BonusVideoCard";
+
 
 type ModuleListProps = {
   ModuleId: number;

@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { DownloadIcon, StarIcon } from "lucide-react";
+import { StarIcon } from "lucide-react";
 import Image from "next/image";
 interface BonusVideoCardProps {
   title: string;
@@ -15,29 +15,8 @@ export const BonusVideoCard = ({
   description,
   isActive,
   id,
-  items,
 }: BonusVideoCardProps) => {
-  const handleDownload = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
-    // Using a placeholder API URL since we don't have the actual env variable
-    const apiUrl = process.env.REACT_APP_API_URL || "https://api.example.com";
-    const fileUrl = `${apiUrl}/${items[0]}`;
-    try {
-      const response = await fetch(fileUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = fileUrl.split("/").pop() || "download";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Download failed:", error);
-    }
-  };
+
   return (
     <div
       className={clsx({
@@ -64,7 +43,7 @@ export const BonusVideoCard = ({
       <div>
         <h3 className="text-[18px] font-medium">{title}</h3>
         <p className="leading-[100%] text-sm text-[14px] mb-2">{description}</p>
- 
+
       </div>
     </div>
   );
