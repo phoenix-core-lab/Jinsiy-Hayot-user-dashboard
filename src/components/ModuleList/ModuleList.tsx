@@ -19,14 +19,12 @@ type ModuleListProps = {
   ModuleId: number;
   module: Module;
   lessons: Lesson[];
-  defaultOpen?: boolean;
 };
 
 const ModuleList = ({
   module,
   lessons,
   ModuleId,
-  defaultOpen,
 }: ModuleListProps) => {
   const { currentVideo, setCurrentVideo } = useCourseStore();
 
@@ -57,7 +55,6 @@ const ModuleList = ({
       <Accordion
         type="single"
         collapsible
-        defaultValue={defaultOpen ? String(ModuleId) : undefined}
       >
         <AccordionItem value={String(ModuleId)}>
           <AccordionTrigger className="py-2  pl-4 bg-[#a8000053]">

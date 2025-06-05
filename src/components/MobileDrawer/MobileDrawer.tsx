@@ -20,7 +20,6 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import { useUserStore } from "@/store/userStore";
 import { useEffect } from "react";
 

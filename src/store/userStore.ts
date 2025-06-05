@@ -36,8 +36,12 @@ export const useUserStore = create<UserStore>((set) => ({
         }
       );
       set({ user: response.data });
-    } catch (error: any) {
-      if (error?.response?.status === 401) {
+    } catch (error: unknown) {
+      if (
+        error instanceof Object &&
+        "status" in error &&
+        error.status === 401
+      ) {
         set({ user: null });
       }
       console.error("Failed to fetch user", error);

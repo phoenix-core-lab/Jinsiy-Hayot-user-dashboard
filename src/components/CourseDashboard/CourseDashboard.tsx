@@ -140,7 +140,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
                 ModuleId={item.id}
                 module={item}
                 lessons={item.lessons}
-                defaultOpen={index === 0}
+
               />
             </motion.div>
           ))}
@@ -167,7 +167,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               ModuleId={item.id}
               module={item}
               lessons={item.lessons}
-              defaultOpen={index === 0}
+
             />
           </motion.div>
         ))}
