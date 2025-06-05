@@ -38,7 +38,7 @@ export function SettingsForm({ initialData }: SettingsFormProps) {
 
         <div>
           <label className="block text-sm font-medium mb-1">
-            Planformada ro&apos;yxatdan o&apos;tilgan sana
+            Platformada ro&apos;yxatdan o&apos;tilgan sana
           </label>
           <p className="w-full bg-[#F73100]/30 border-none rounded-[9px] p-2 text-white">
             {registerDate}
