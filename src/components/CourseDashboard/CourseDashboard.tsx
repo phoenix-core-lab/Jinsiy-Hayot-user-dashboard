@@ -15,6 +15,8 @@ const CourseDashboard = ({ id }: { id: string }) => {
   const { user } = useUserStore()
   const [viewers, setViewers] = useState(0);
   const router = useRouter()
+  const [videoDuration, setVideoDuration] = useState<string>("0:00");
+
 
 
   useEffect(() => {
@@ -34,6 +36,18 @@ const CourseDashboard = ({ id }: { id: string }) => {
 
     return () => clearInterval(interval); // очистка при размонтировании
   }, []);
+  const formatDuration = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+
+    if (h > 0) {
+      return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+    } else {
+      return `${m}:${s.toString().padStart(2, '0')}`;
+    }
+  };
+
 
   if (error) {
     return <div className="text-red-500 p-4">{error}</div>;
@@ -65,7 +79,11 @@ const CourseDashboard = ({ id }: { id: string }) => {
               poster={"/course.png"}
               controls
               className="w-full h-full lg:rounded-lg object-cover bg-[#911D00] "
-
+              onLoadedMetadata={(e) => {
+                const duration = e.currentTarget.duration;
+                const formatted = formatDuration(duration);
+                setVideoDuration(formatted);
+              }}
             >
               <source
                 src={`${process.env.NEXT_PUBLIC_API_URL}/${currentVideo}`}
@@ -99,9 +117,9 @@ const CourseDashboard = ({ id }: { id: string }) => {
           {/* <h3 className="text-lg md:text-xl font-medium mb-2 text-[#B0B0B0]">
             Kurs nomi: {course.title}
           </h3> */}
-          <p className="text-[#B0B0B0]">Muallif: {course.author}</p>
+          <p className="text-[#B0B0B0]">Mutaxassis: {course.author}</p>
           <p className="mb-2 lg:mb-4 text-[#B0B0B0]">
-            Davomiyligi: {course.time}
+            Davomiyligi: {videoDuration}
           </p>
           <p className="text-[#B0B0B0]">{course.description}</p>
         </motion.div>

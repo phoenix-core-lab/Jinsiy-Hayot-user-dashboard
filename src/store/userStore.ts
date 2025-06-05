@@ -19,6 +19,7 @@ export type User = {
 type UserStore = {
   user: User | null;
   fetchUser: () => Promise<void>;
+  logout: () => void;
 };
 
 export const useUserStore = create<UserStore>((set) => ({
@@ -35,16 +36,16 @@ export const useUserStore = create<UserStore>((set) => ({
         }
       );
       set({ user: response.data });
-    } catch (error: unknown) {
-      if (
-        error instanceof Object &&
-        "status" in error &&
-        error.status === 401
-      ) {
-        // Cookies.remove("access_token");
-        // window.location.href = "/";
+    } catch (error: any) {
+      if (error?.response?.status === 401) {
+        set({ user: null });
       }
       console.error("Failed to fetch user", error);
     }
+  },
+
+  logout: () => {
+    set({ user: null });
+    Cookies.remove("access_token");
   },
 }));

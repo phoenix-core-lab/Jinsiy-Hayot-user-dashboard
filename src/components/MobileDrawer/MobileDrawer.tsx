@@ -24,6 +24,7 @@ import Cookies from "js-cookie";
 import { useUserStore } from "@/store/userStore";
 import { useEffect } from "react";
 
+
 const MobileDrawer = () => {
   const { setOpen, isOpen } = useSidebarStore();
   const pathname = usePathname();
@@ -34,7 +35,8 @@ const MobileDrawer = () => {
     if (!user) {
       fetchUser();
     }
-  }, [user]);
+  }, []);
+
   const getInitials = (name: string) => {
     return name
       .split(" ")
@@ -131,7 +133,7 @@ const MobileDrawer = () => {
             <button
               name="exit"
               onClick={() => {
-                Cookies.remove("access_token");
+                useUserStore.getState().logout(); // обнуляем user и удаляем токен
                 router.replace("/");
               }}
               className="cursor-pointer w-8 h-8"

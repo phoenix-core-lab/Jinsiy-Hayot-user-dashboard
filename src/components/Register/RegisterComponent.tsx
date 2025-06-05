@@ -169,7 +169,7 @@ export default function RegisterComponent() {
                     htmlFor="phoneNumber"
                     className="text-gray-400 text-[16px]"
                   >
-                    Telefon raqami
+                    Telefon raqami  (Telegram orqali)
                   </label>
                   <Controller
                     name="phoneNumber"
@@ -200,9 +200,7 @@ export default function RegisterComponent() {
                       />
                     )}
                   />
-                  <p className="text-[12px] text-white mt-1">
-                    Telegram mavjud bo‘lgan raqamni kiriting
-                  </p>
+
                   {errors.phoneNumber && (
                     <p className="text-red-500 text-xs mt-1">
                       {errors.phoneNumber.message}
