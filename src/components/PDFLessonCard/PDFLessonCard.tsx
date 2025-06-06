@@ -13,7 +13,6 @@ export const PdfLessonCard = ({
   title,
 
   isActive,
-  id,
   items,
 }: PdfLessonCardProps) => {
   const handleDownload = async () => {

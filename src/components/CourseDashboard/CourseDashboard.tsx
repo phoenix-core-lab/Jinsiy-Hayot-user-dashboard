@@ -6,14 +6,10 @@ import { useCourseStore } from "@/store/courseStore";
 import { motion } from "framer-motion"; // ✅ Framer Motion
 import { CommentsSection } from "../CommentsSection/CommentsSection";
 import { MobileComments } from "../MobileComments/MobileComments";
-import { useUserStore } from "@/store/userStore";
-import { useRouter } from "next/navigation";
 
 const CourseDashboard = ({ id }: { id: string }) => {
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
-  const { user } = useUserStore();
   const [viewers, setViewers] = useState(0);
-  const router = useRouter();
   const [videoDuration, setVideoDuration] = useState<string>("0:00");
 
   useEffect(() => {

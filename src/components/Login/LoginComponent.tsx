@@ -52,7 +52,7 @@ export default function LoginComponent() {
       window.history.replaceState({}, "", cleanUrl);
       router.push("/courses");
     }
-  }, []);
+  }, [router]);
 
   const onSubmit: SubmitHandler<UserFormInput> = async (data) => {
     try {

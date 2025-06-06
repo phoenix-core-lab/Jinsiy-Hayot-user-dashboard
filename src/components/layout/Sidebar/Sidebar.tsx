@@ -22,7 +22,7 @@ const Sidebar = () => {
     if (!user) {
       fetchUser();
     }
-  }, [user]);
+  }, [user, fetchUser]);
 
   const getInitials = (name: string) => {
     return name

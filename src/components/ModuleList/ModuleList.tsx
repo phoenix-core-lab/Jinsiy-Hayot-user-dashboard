@@ -40,7 +40,7 @@ const ModuleList = ({ module, lessons, ModuleId, startIndex }: ModuleListProps) 
     if (currentVideo) {
       updateCurrentVideo(currentVideo);
     }
-  }, [lessons]);
+  }, [lessons, updateCurrentVideo]);
 
   return (
     <motion.div

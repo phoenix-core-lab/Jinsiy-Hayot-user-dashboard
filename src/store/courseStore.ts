@@ -2,7 +2,6 @@
 import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 
 export type Lesson = {
   id: number;

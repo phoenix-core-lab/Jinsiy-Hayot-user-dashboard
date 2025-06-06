@@ -10,7 +10,7 @@ export const CommingSoonCard = () => {
     </div>
     <div className="relative w-full h-20 rounded-xl bg-gray-900/60 backdrop-blur-md flex items-center justify-center border border-dashed border-gray-500">
       <span className="text-white text-md font-semibold tracking-wide">
-        🔒 Tez orada! Behayolik san'ati
+        🔒 Tez orada! Behayolik san&apos;ati
       </span>
     </div>
     </div>
