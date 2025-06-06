@@ -9,15 +9,12 @@ import { MobileComments } from "../MobileComments/MobileComments";
 import { useUserStore } from "@/store/userStore";
 import { useRouter } from "next/navigation";
 
-
 const CourseDashboard = ({ id }: { id: string }) => {
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
-  const { user } = useUserStore()
+  const { user } = useUserStore();
   const [viewers, setViewers] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
   const [videoDuration, setVideoDuration] = useState<string>("0:00");
-
-
 
   useEffect(() => {
     fetchCourse(id);
@@ -36,18 +33,26 @@ const CourseDashboard = ({ id }: { id: string }) => {
 
     return () => clearInterval(interval); // очистка при размонтировании
   }, []);
+
   const formatDuration = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
 
+    // setCurrentLesson(
+    //   course?.modules
+    //     .flatMap((mod) => mod.lessons)
+    //     .find((lesson) => lesson.videoUrl === currentVideo) ?? null
+    // );
+
     if (h > 0) {
-      return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      return `${h}:${m.toString().padStart(2, "0")}:${s
+        .toString()
+        .padStart(2, "0")}`;
     } else {
-      return `${m}:${s.toString().padStart(2, '0')}`;
+      return `${m}:${s.toString().padStart(2, "0")}`;
     }
   };
-
 
   if (error) {
     return <div className="text-red-500 p-4">{error}</div>;
@@ -57,8 +62,8 @@ const CourseDashboard = ({ id }: { id: string }) => {
     return <div className="p-4">Yuklanmoqda...</div>;
   }
 
-  if ((!user)) {
-    router.push("/")
+  if (!user) {
+    router.push("/");
   }
 
   return (
@@ -101,7 +106,11 @@ const CourseDashboard = ({ id }: { id: string }) => {
         >
           <div className="mb-1 md:mb-4 flex items-center justify-between">
             <h2 className="text-lg md:text-xl font-medium ">
-              Dars nomi: {course.modules?.[0]?.title || "N/A"}
+              Dars nomi:{" "}
+              {course?.modules
+                .flatMap((mod) => mod.lessons)
+                .find((lesson) => lesson.videoUrl === currentVideo)?.title ||
+                "Yuklanmoqda..."}
             </h2>
             <div className="flex items-center gap-2  px-4 py-2 rounded-full text-white shadow-lg">
               <div className="flex items-center gap-2">
@@ -114,9 +123,6 @@ const CourseDashboard = ({ id }: { id: string }) => {
               </div>
             </div>
           </div>
-          {/* <h3 className="text-lg md:text-xl font-medium mb-2 text-[#B0B0B0]">
-            Kurs nomi: {course.title}
-          </h3> */}
           <p className="text-[#B0B0B0]">Mutaxassis: {course.author}</p>
           <p className="mb-2 lg:mb-4 text-[#B0B0B0]">
             Davomiyligi: {videoDuration}
@@ -140,11 +146,9 @@ const CourseDashboard = ({ id }: { id: string }) => {
                 ModuleId={item.id}
                 module={item}
                 lessons={item.lessons}
-
               />
             </motion.div>
           ))}
-
         </div>
       </div>
 
@@ -167,7 +171,6 @@ const CourseDashboard = ({ id }: { id: string }) => {
               ModuleId={item.id}
               module={item}
               lessons={item.lessons}
-
             />
           </motion.div>
         ))}
