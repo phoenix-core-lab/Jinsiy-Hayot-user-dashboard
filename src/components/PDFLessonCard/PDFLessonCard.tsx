@@ -19,8 +19,8 @@ export const PdfLessonCard = ({
   const handleDownload = async () => {
 
     // Using a placeholder API URL since we don't have the actual env variable
-    const apiUrl = process.env.REACT_APP_API_URL || "https://api.example.com";
-    const fileUrl = `${apiUrl}/${items[0]}`;
+    ;
+    const fileUrl = `${process.env.NEXT_PUBLIC_API_URL}/${items[0]}`;
     try {
       const response = await fetch(fileUrl);
       const blob = await response.blob();
@@ -45,7 +45,7 @@ export const PdfLessonCard = ({
       })}
     >
       <div className="min-w-[160px] h-[90px] bg-[#484848] rounded-sm relative flex items-center justify-center">
-        <span className="absolute left-2 top-2">{id}</span>
+
         <FileTextIcon className="h-12 w-12 text-gray-300" />
         <div className="absolute bottom-2 right-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-sm">
           PDF

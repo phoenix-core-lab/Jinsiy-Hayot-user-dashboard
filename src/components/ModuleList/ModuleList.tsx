@@ -71,47 +71,51 @@ const ModuleList = ({
               scrollbarColor: "#520900 #300100",
             }}
           >
-            {lessons.map((item, index) => (
-              <motion.div
-                key={item.id}
-                onClick={() =>
-                  item.videoUrl && updateCurrentVideo(item.videoUrl)
-                }
-                className="cursor-pointer"
-                role="listitem"
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-              >
-                <VideoMiniCard
-                  id={item.id}
-                  title={item.title}
-                  isActive={item.videoUrl === currentVideo}
-                  items={item.items}
-                />
-              </motion.div>
-            ))}
-
             {
-              module.title === "Bonus materiallar" &&
-              module.lessons.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="cursor-pointer"
-                  role="listitem"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
-                >
-                  <PdfLessonCard
-                    id={item.id}
-                    title={item.title}
-                    isActive={item.videoUrl === currentVideo}
-                    items={item.items}
-                  />
-                </motion.div>
-              ))
+              module.title === "Bonus materiallar" ? (
+                module.lessons.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    className="cursor-pointer"
+                    role="listitem"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                  >
+                    <PdfLessonCard
+                      id={item.id}
+                      title={item.title}
+                      isActive={item.videoUrl === currentVideo}
+                      items={item.items}
+                    />
+                  </motion.div>
+                ))
+              )
+
+                : (
+                  lessons.map((item, index) => (
+                    <motion.div
+                      key={item.id}
+                      onClick={() =>
+                        item.videoUrl && updateCurrentVideo(item.videoUrl)
+                      }
+                      className="cursor-pointer"
+                      role="listitem"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                    >
+                      <VideoMiniCard
+                        id={item.id}
+                        title={item.title}
+                        isActive={item.videoUrl === currentVideo}
+                        items={item.items}
+                      />
+                    </motion.div>
+                  ))
+                )
             }
+
 
           </AccordionContent>
         </AccordionItem>
