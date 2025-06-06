@@ -6,6 +6,7 @@ import { useCourseStore } from "@/store/courseStore";
 import { Module, Lesson } from "@/store/courseStore";
 import { motion, useInView } from "framer-motion";
 import { useRef, useLayoutEffect } from "react";
+import { useCallback } from "react";
 import Cookies from "js-cookie";
 import {
   Accordion,
@@ -22,15 +23,23 @@ type ModuleListProps = {
   lessons: Lesson[];
 };
 
-const ModuleList = ({ module, lessons, ModuleId, startIndex }: ModuleListProps) => {
+const ModuleList = ({
+  module,
+  lessons,
+  ModuleId,
+  startIndex,
+}: ModuleListProps) => {
   const { currentVideo, setCurrentVideo } = useCourseStore();
 
-  function updateCurrentVideo(videoUrl: string) {
-    console.log(videoUrl, "VideoUrl");
+  const updateCurrentVideo = useCallback(
+    (videoUrl: string) => {
+      console.log(videoUrl, "VideoUrl");
 
-    setCurrentVideo(videoUrl);
-    Cookies.set("currentVideo", videoUrl);
-  }
+      setCurrentVideo(videoUrl);
+      Cookies.set("currentVideo", videoUrl);
+    },
+    [setCurrentVideo]
+  );
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -80,7 +89,9 @@ const ModuleList = ({ module, lessons, ModuleId, startIndex }: ModuleListProps) 
                     transition={{ delay: index * 0.05, duration: 0.3 }}
                   >
                     <VideoMiniCard
-                      index={startIndex !== undefined ? startIndex + index : index}
+                      index={
+                        startIndex !== undefined ? startIndex + index : index
+                      }
                       id={item.id}
                       title={item.title}
                       isActive={item.videoUrl === currentVideo}
@@ -90,7 +101,7 @@ const ModuleList = ({ module, lessons, ModuleId, startIndex }: ModuleListProps) 
                 )
             )}
 
-            {module.title === "Bonus materiallar" && 
+            {module.title === "Bonus materiallar" &&
               module.lessons.map((item, index) => (
                 <motion.div
                   key={item.id}
@@ -107,19 +118,19 @@ const ModuleList = ({ module, lessons, ModuleId, startIndex }: ModuleListProps) 
                     items={item.items}
                   />
                 </motion.div>
-              ))
-            }
+              ))}
 
-            {module.title === "Bonus materiallar" && <motion.div
-                  className="cursor-pointer"
-                  role="listitem"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 1 * 0.05, duration: 0.3 }}
-                >
-                  <CommingSoonCard/>
-                </motion.div>
-            }
+            {module.title === "Bonus materiallar" && (
+              <motion.div
+                className="cursor-pointer"
+                role="listitem"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 1 * 0.05, duration: 0.3 }}
+              >
+                <CommingSoonCard />
+              </motion.div>
+            )}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
