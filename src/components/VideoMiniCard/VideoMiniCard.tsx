@@ -1,10 +1,10 @@
 "use client";
 import clsx from "clsx";
 import Image from "next/image";
-import React from "react";
-
+import React, { useState } from "react";
 
 interface VideoCardProps {
+  index: number;
   title: string;
   isActive?: boolean;
   id: number;
@@ -12,10 +12,9 @@ interface VideoCardProps {
   items: string[];
 }
 
-export const VideoMiniCard = ({
-  title,
-  isActive,
-}: VideoCardProps) => {
+export const VideoMiniCard = ({ index, title, isActive }: VideoCardProps) => {
+
+  const [imgSrc, setImgSrc] = useState("/" + (index + 1) + "preview.png");
 
   return (
     <div
@@ -30,12 +29,13 @@ export const VideoMiniCard = ({
           className="w-[150px] h-[90px] rounded-sm object-cover"
           width={150}
           height={90}
-          src="/course.png"
-          alt=""
+          src={imgSrc}
+          alt="Preview"
+          onError={() => setImgSrc("/course.png")}
         />
       </div>
       <h3
-        className="text-[16px] font-medium  overflow-hidden text-ellipsis"
+        className="text-[12px] sm:text-[14px] font-medium pt-3 overflow-hidden text-ellipsis"
         style={{
           display: "-webkit-box",
           WebkitLineClamp: 2,

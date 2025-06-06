@@ -39,12 +39,6 @@ const CourseDashboard = ({ id }: { id: string }) => {
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
 
-    // setCurrentLesson(
-    //   course?.modules
-    //     .flatMap((mod) => mod.lessons)
-    //     .find((lesson) => lesson.videoUrl === currentVideo) ?? null
-    // );
-
     if (h > 0) {
       return `${h}:${m.toString().padStart(2, "0")}:${s
         .toString()
@@ -62,10 +56,6 @@ const CourseDashboard = ({ id }: { id: string }) => {
     return <div className="p-4">Yuklanmoqda...</div>;
   }
 
-  if (!user) {
-    router.push("/");
-  }
-
   return (
     <div className="flex flex-col w-full gap-3 lg:flex-row mx-auto h-full lg:p-2">
       <div className="lg:w-[75%]">
@@ -81,7 +71,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               key={currentVideo}
               controlsList="nodownload"
               onContextMenu={(e) => e.preventDefault()}
-              poster={"/course.png"}
+              poster={"/1preview.png"}
               controls
               className="w-full h-full lg:rounded-lg object-cover bg-[#911D00] "
               onLoadedMetadata={(e) => {
@@ -135,20 +125,27 @@ const CourseDashboard = ({ id }: { id: string }) => {
         </div>
         <MobileComments videoId={"video-1"} />
         <div className="lg:hidden mt-3 mb-3 flex flex-col gap-1 px-2">
-          {course.modules.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.3 }}
-            >
-              <ModuleList
-                ModuleId={item.id}
-                module={item}
-                lessons={item.lessons}
-              />
-            </motion.div>
-          ))}
+          {course.modules.map((item, index) => {
+            const startIndex = course.modules
+              .slice(0, index)
+              .reduce((sum, mod) => sum + mod.lessons.length, 0);
+
+            return (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.3 }}
+              >
+                <ModuleList
+                  startIndex={startIndex}
+                  ModuleId={item.id}
+                  module={item}
+                  lessons={item.lessons}
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
@@ -160,20 +157,27 @@ const CourseDashboard = ({ id }: { id: string }) => {
           scrollbarColor: "#520900 #300100",
         }}
       >
-        {course.modules.map((item, index) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.05, duration: 0.3 }}
-          >
-            <ModuleList
-              ModuleId={item.id}
-              module={item}
-              lessons={item.lessons}
-            />
-          </motion.div>
-        ))}
+        {course.modules.map((item, index) => {
+          const startIndex = course.modules
+            .slice(0, index)
+            .reduce((sum, mod) => sum + mod.lessons.length, 0);
+
+          return (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05, duration: 0.3 }}
+            >
+              <ModuleList
+                startIndex={startIndex}
+                ModuleId={item.id}
+                module={item}
+                lessons={item.lessons}
+              />
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );

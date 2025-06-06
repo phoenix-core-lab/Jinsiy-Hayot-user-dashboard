@@ -2,6 +2,7 @@
 import { create } from "zustand";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export type Lesson = {
   id: number;
@@ -87,6 +88,7 @@ export const useCourseStore = create<CourseState>((set) => ({
       });
     } catch (error: unknown) {
       console.error("Failed to fetch course", error);
+      window.location.href = "/";
       set({ error: "Failed to load course data. Please try again." });
     }
     // set({
