@@ -16,6 +16,16 @@ const CoursesPage = () => {
   if (!course?.paid) {
     return (
       <div className="flex flex-col items-center justify-center h-full">
+        <h3 className="mb-2">1 foiz bizning videokursimizdan</h3>
+        <video
+          className="w-full max-w-lg shadow-lg"
+          src="/lesson.mp4"
+          controls
+          poster="/11preview.png"
+        >
+          <source src="/lesson.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <h1 className="text-2xl font-bold text-center mt-10">
           Siz kursni sotib olmadingiz
         </h1>
