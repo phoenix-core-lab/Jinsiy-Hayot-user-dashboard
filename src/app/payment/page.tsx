@@ -1,7 +1,7 @@
 import React from "react";
 import PaymentComponent from "@/components/PaymentComponent";
 
-const PaymentPage = () => {
+const Payment = () => {
   return (
     <>
       <PaymentComponent />
@@ -9,4 +9,4 @@ const PaymentPage = () => {
   )
 };
 
-export default PaymentPage;
+export default Payment;
