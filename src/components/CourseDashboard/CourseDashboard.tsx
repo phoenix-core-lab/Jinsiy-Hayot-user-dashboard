@@ -77,7 +77,7 @@ const CourseDashboard = ({ id }: { id: string }) => {
               key={currentVideo}
               controlsList="nodownload"
               onContextMenu={(e) => e.preventDefault()}
-              poster={"/1preview.png"}
+              poster={"/course.png"}
               controls
               className="w-full h-full lg:rounded-lg object-cover bg-[#911D00]"
               onLoadedMetadata={(e) => {
