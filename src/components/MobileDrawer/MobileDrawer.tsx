@@ -13,7 +13,6 @@ import {
   BookOpenIcon,
   LogOut,
   SettingsIcon,
-  SquareArrowOutUpRight,
   XIcon,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
