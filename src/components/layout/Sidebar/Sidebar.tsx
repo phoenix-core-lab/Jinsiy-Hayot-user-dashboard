@@ -82,7 +82,7 @@ const Sidebar = () => {
               Sozlama
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="https://jinsiy-hayot.org"
               className={clsx(
@@ -92,7 +92,7 @@ const Sidebar = () => {
               <SquareArrowOutUpRight width={20} height={20} />
               Saytga o&apos;tish
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
 

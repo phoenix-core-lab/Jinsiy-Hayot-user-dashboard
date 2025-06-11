@@ -1,6 +1,5 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ModuleList from "../ModuleList/ModuleList";
 import { useCourseStore } from "@/store/courseStore";
 import { motion } from "framer-motion"; // ✅ Framer Motion
@@ -8,6 +7,7 @@ import { CommentsSection } from "../CommentsSection/CommentsSection";
 import { MobileComments } from "../MobileComments/MobileComments";
 
 const CourseDashboard = ({ id }: { id: string }) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const { course, currentVideo, error, fetchCourse } = useCourseStore();
   const [viewers, setViewers] = useState(0);
   const [videoDuration, setVideoDuration] = useState<string>("0:00");
@@ -29,6 +29,15 @@ const CourseDashboard = ({ id }: { id: string }) => {
 
     return () => clearInterval(interval); // очистка при размонтировании
   }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load(); // Перезагружаем видео
+      videoRef.current
+        .play()
+        .catch((e) => console.log("Автовоспроизведение не удалось:", e));
+    }
+  }, [currentVideo]);
 
   const formatDuration = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
@@ -63,13 +72,14 @@ const CourseDashboard = ({ id }: { id: string }) => {
         >
           <div className="aspect-video w-full">
             <video
+              ref={videoRef}
               src={`${process.env.NEXT_PUBLIC_API_URL}/${currentVideo}`}
               key={currentVideo}
               controlsList="nodownload"
               onContextMenu={(e) => e.preventDefault()}
               poster={"/1preview.png"}
               controls
-              className="w-full h-full lg:rounded-lg object-cover bg-[#911D00] "
+              className="w-full h-full lg:rounded-lg object-cover bg-[#911D00]"
               onLoadedMetadata={(e) => {
                 const duration = e.currentTarget.duration;
                 const formatted = formatDuration(duration);
