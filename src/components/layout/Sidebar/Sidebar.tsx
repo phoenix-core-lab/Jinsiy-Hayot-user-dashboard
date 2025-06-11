@@ -8,7 +8,6 @@ import {
 
   LogOut,
   SettingsIcon,
-  SquareArrowOutUpRight,
 } from "lucide-react";
 import Image from "next/image";
 import Cookies from "js-cookie";

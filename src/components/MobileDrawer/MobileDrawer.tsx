@@ -34,7 +34,7 @@ const MobileDrawer = () => {
     if (!user) {
       fetchUser();
     }
-  }, [fetchUser]);
+  }, [fetchUser, user]);
 
   const getInitials = (name: string) => {
     return name
