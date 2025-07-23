@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
-import { FileTextIcon } from "lucide-react";
+// import { FileTextIcon } from "lucide-react";
+import Image from "next/image";
 interface PdfLessonCardProps {
   title: string;
 
@@ -11,7 +12,6 @@ interface PdfLessonCardProps {
 }
 export const PdfLessonCard = ({
   title,
-
   isActive,
   items,
 }: PdfLessonCardProps) => {
@@ -43,9 +43,16 @@ export const PdfLessonCard = ({
         "bg-[#09005e]": isActive,
       })}
     >
-      <div className="min-w-[160px] h-[90px] bg-[#484848] rounded-sm relative flex items-center justify-center">
+      <div className="min-w-[150px] h-[90px] bg-[#484848] rounded-sm relative flex items-center justify-center">
+        <Image
+          className="w-[150px] h-[90px] rounded-sm object-cover"
+          width={150}
+          height={90}
+          src="/bonus-preview.png"
+          alt="Preview"
 
-        <FileTextIcon className="h-12 w-12 text-gray-300" />
+        />
+        {/* <FileTextIcon className="h-12 w-12 text-gray-300" /> */}
         <div className="absolute bottom-2 right-2 bg-yellow-500 text-white text-xs px-2 py-0.5 rounded-sm">
           PDF
         </div>
