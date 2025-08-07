@@ -1,7 +1,7 @@
 "use client";
 
 import { VideoMiniCard } from "../VideoMiniCard/VideoMiniCard";
-import { CommingSoonCard } from "../CommingSoonCard/CommingSoonCard";
+
 import { useCourseStore } from "@/store/courseStore";
 import { Module, Lesson } from "@/store/courseStore";
 import { motion, useInView } from "framer-motion";
