@@ -102,23 +102,39 @@ const ModuleList = ({
             )}
 
             {module.title === "Bonus materiallar" &&
-              module.lessons.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="cursor-pointer"
-                  role="listitem"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
-                >
-                  <PdfLessonCard
-                    id={item.id}
-                    title={item.title}
-                    isActive={item.videoUrl === currentVideo}
-                    items={item.items}
-                  />
-                </motion.div>
-              ))}
+              module.lessons.map((item, index) => {
+                const isFirst = index == 0
+                return (
+                  <motion.div
+                    key={item.id}
+                    className="cursor-pointer"
+                    role="listitem"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                  >
+                    {isFirst ? (
+                      <PdfLessonCard
+                        index={index}
+                        id={item.id}
+                        title={item.title}
+                        isActive={item.videoUrl === currentVideo}
+                        items={item.items}
+                      />
+                    ) : (
+                      <VideoMiniCard
+                        isBonus={true}
+                        index={index}
+                        id={item.id}
+                        title={item.title}
+                        isActive={item.videoUrl === currentVideo}
+                        items={item.items}
+                      />
+                    )}
+
+                  </motion.div>
+                )
+              })}
 
             {module.title === "Bonus materiallar" && (
               <motion.div
@@ -128,7 +144,7 @@ const ModuleList = ({
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 1 * 0.05, duration: 0.3 }}
               >
-                <CommingSoonCard />
+                {/* <CommingSoonCard /> */}
               </motion.div>
             )}
           </AccordionContent>

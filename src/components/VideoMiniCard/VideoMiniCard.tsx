@@ -10,11 +10,12 @@ interface VideoCardProps {
   id: number;
   onClick?: () => void;
   items: string[];
+  isBonus?: boolean;
 }
 
-export const VideoMiniCard = ({ index, title, isActive }: VideoCardProps) => {
-
-  const [imgSrc, setImgSrc] = useState("/" + (index + 1) + "preview.png");
+export const VideoMiniCard = ({ index, title, isActive, isBonus }: VideoCardProps) => {
+  const videoEndLink = isBonus ? "bonus-preview.png" : "preview.png";
+  const [imgSrc, setImgSrc] = useState("/" + (index + 1) + videoEndLink);
 
   return (
     <div

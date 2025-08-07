@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 // import { FileTextIcon } from "lucide-react";
 import Image from "next/image";
 interface PdfLessonCardProps {
   title: string;
-
   isActive?: boolean;
   id: number;
   onClick?: () => void;
   items: string[];
+  index: number;
 }
 export const PdfLessonCard = ({
   title,
   isActive,
   items,
+  index,
 }: PdfLessonCardProps) => {
   const handleDownload = async () => {
-
     // Using a placeholder API URL since we don't have the actual env variable
     ;
     const fileUrl = `${process.env.NEXT_PUBLIC_API_URL}/${items[0]}`;
@@ -35,6 +35,7 @@ export const PdfLessonCard = ({
       console.error("Download failed:", error);
     }
   };
+  const [imgSrc, setImgSrc] = useState("/" + (index + 1) + "bonus-preview.png");
   return (
     <div
       onClick={handleDownload}
@@ -48,7 +49,7 @@ export const PdfLessonCard = ({
           className="w-[150px] h-[90px] rounded-sm object-cover"
           width={150}
           height={90}
-          src="/bonus-preview.png"
+          src={imgSrc}
           alt="Preview"
 
         />
