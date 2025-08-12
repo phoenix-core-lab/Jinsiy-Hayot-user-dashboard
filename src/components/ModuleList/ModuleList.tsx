@@ -103,12 +103,22 @@ const ModuleList = ({
 
             {module.title === "Bonus materiallar" &&
               module.lessons.map((item, index) => {
-                const isFirst = index == 0
+                const isFirst = index === 0;
                 return (
                   <motion.div
                     key={item.id}
                     className="cursor-pointer"
                     role="listitem"
+                    onClick={
+                      !isFirst
+                        ? () => {
+                          if (item.videoUrl) {
+                            updateCurrentVideo(item.videoUrl);
+                          }
+                        }
+                        : undefined
+                    }
+
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ delay: index * 0.05, duration: 0.3 }}
@@ -131,10 +141,10 @@ const ModuleList = ({
                         items={item.items}
                       />
                     )}
-
                   </motion.div>
-                )
+                );
               })}
+
 
             {module.title === "Bonus materiallar" && (
               <motion.div

@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { EyeIcon, EyeOffIcon, MessageCircle } from "lucide-react";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -289,6 +289,26 @@ export default function ResetPasswordComponent() {
             )}
           </div>
         </div>
+      </div>
+      <div className="absolute bottom-4 left-4 z-20">
+        <a
+          href="https://t.me/your_support_bot" // Замените на ваш Telegram бот или канал
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 bg-[#1a0e0e] hover:bg-[#2a1515] text-gray-400 hover:text-white border border-gray-800 hover:border-[#FF3A29] px-4 py-3 rounded-xl transition-all duration-300 text-sm font-medium shadow-2xl backdrop-blur-sm hover:shadow-[0_0_20px_rgba(255,58,41,0.3)] hover:scale-105"
+        >
+          <div className="p-2 bg-[#FF3A29] group-hover:bg-[#CC1F00] rounded-lg transition-colors duration-300">
+            <MessageCircle size={16} className="text-white" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              Savollar bormi?
+            </span>
+            <span className="font-medium">
+              Yordam olish
+            </span>
+          </div>
+        </a>
       </div>
 
       {/* Right side - Video */}

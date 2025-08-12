@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { EyeIcon, EyeOffIcon, MessageCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -13,9 +13,24 @@ import { toast } from "sonner";
 import { formatUzPhone } from "@/utils/formatUzPhone";
 
 interface UserFormInput {
-  phoneNumber: string;
+  login: string;
   password: string;
 }
+
+// Функция для проверки, является ли введенный текст номером телефона
+const isPhoneNumber = (value: string): boolean => {
+  const cleanValue = value.replace(/\s/g, "");
+  return cleanValue.startsWith("+998") && /^\+998\d{9}$/.test(cleanValue.replace(/\s/g, ""));
+};
+
+// Функция для проверки, начинает ли пользователь вводить номер телефона
+const looksLikePhoneStart = (value: string): boolean => {
+  const clean = value.replace(/\s/g, "");
+  // Проверяем только если значение точно соответствует началу номера телефона
+  return (clean.startsWith("+998") && clean.length > 4) || 
+         (clean.startsWith("998") && clean.length > 3) || 
+         clean === "+";
+};
 
 export default function LoginComponent() {
   const {
@@ -23,15 +38,18 @@ export default function LoginComponent() {
     handleSubmit,
     control,
     formState: { errors },
+    watch,
   } = useForm<UserFormInput>({
     defaultValues: {
-      phoneNumber: "+998 ",
+      login: "",
       password: "",
     },
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  
+  const loginValue = watch("login");
 
   const router = useRouter();
 
@@ -56,11 +74,19 @@ export default function LoginComponent() {
 
   const onSubmit: SubmitHandler<UserFormInput> = async (data) => {
     try {
+      // Подготавливаем данные для отправки
+      let loginData = data.login;
+      
+      // Если это номер телефона, очищаем от лишних символов
+      if (looksLikePhoneStart(data.login)) {
+        loginData = data.login.replace(/[^\d+]/g, "");
+      }
+
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
         {
-          ...data,
-          phoneNumber: data.phoneNumber.replace(/[^\d+]/g, ""),
+          phoneNumber: loginData, // Отправляем под ключом phoneNumber, даже если это логин
+          password: data.password,
         },
         {
           headers: {
@@ -78,7 +104,7 @@ export default function LoginComponent() {
         if (error.status === 401) {
           toast.error("Parolda xatolik!");
         }
-        toast.error("Bunday foydalanuvchi yo'k yoki server xatoligi!");
+        toast.error("Bunday foydalanuvchi yo'q yoki server xatoligi!");
       } else {
         console.error("Unexpected error:", error);
         toast("Nomaʼlum xatolik yuz berdi.");
@@ -87,7 +113,7 @@ export default function LoginComponent() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-full bg-black overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen w-full bg-black overflow-hidden relative">
       <div className="w-full lg:w-[40%] p-4 sm:p-6 md:p-8 lg:p-12 flex justify-center items-center h-screen relative z-10">
         <div className="w-full max-w-md flex flex-col items-center">
           <div className="w-[159px] h-[54px] mb-6">
@@ -110,7 +136,7 @@ export default function LoginComponent() {
                 href="/register"
                 className="text-[#FF3A29] hover:text-[#E62200] ml-1"
               >
-                Ro‘yxatdan o‘tish
+                Ro'yxatdan o'tish
               </Link>
             </p>
 
@@ -120,41 +146,59 @@ export default function LoginComponent() {
             >
               <div className="space-y-2">
                 <label
-                  htmlFor="phoneNumber"
+                  htmlFor="login"
                   className="text-gray-400 text-[16px]"
                 >
-                  Telefon raqami
+                  Login yoki telefon raqami
                 </label>
                 <Controller
-                  name="phoneNumber"
+                  name="login"
                   control={control}
                   rules={{
-                    required: "Telefon raqam majburiy",
+                    required: "Login majburiy",
                     validate: (value) => {
-                      const digits = value.replace(/\D/g, "");
-                      return digits.length === 12 || "To‘liq raqam kiriting";
+                      // Если это выглядит как номер телефона, проверяем его полноту
+                      if (looksLikePhoneStart(value)) {
+                        const digits = value.replace(/\D/g, "");
+                        return digits.length === 12 || "To'liq telefon raqam kiriting";
+                      }
+                      // Для обычного логина минимальная длина
+                      return value.length >= 3 || "Login kamida 3 ta belgidan iborat bo'lishi kerak";
                     },
                   }}
                   render={({ field }) => (
                     <Input
-                      id="phoneNumber"
-                      placeholder="+998 90 123 45 67"
+                      id="login"
+                      placeholder="Login yoki +998 90 123 45 67"
                       type="text"
                       value={field.value}
                       onChange={(e) => {
                         let input = e.target.value;
-                        if (!input.startsWith("+998 ")) {
-                          input = "+998 ";
+                        
+                        // Если пользователь начинает вводить номер телефона
+                        if (looksLikePhoneStart(input)) {
+                          // Применяем форматирование для телефонных номеров
+                          field.onChange(formatUzPhone(input));
+                        } else {
+                          // Для обычного логина просто сохраняем как есть
+                          // Позволяем пользователю удалить +998 и переключиться на обычный логин
+                          field.onChange(input);
                         }
-                        field.onChange(formatUzPhone(input));
+                      }}
+                      onKeyDown={(e) => {
+                        // Позволяем удалять +998 при нажатии Backspace или Delete
+                        if ((e.key === 'Backspace' || e.key === 'Delete') && field.value === '+998 ') {
+                          e.preventDefault();
+                          field.onChange('');
+                        }
                       }}
                       className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
                     />
                   )}
                 />
-                {errors.phoneNumber && (
+                {errors.login && (
                   <p className="text-red-500 text-xs mt-1">
-                    {errors.phoneNumber.message}
+                    {errors.login.message}
                   </p>
                 )}
               </div>
@@ -173,7 +217,7 @@ export default function LoginComponent() {
                       minLength: {
                         value: 6,
                         message:
-                          "Parol kamida 6 ta belgidan iborat bo‘lishi kerak",
+                          "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
                       },
                     })}
                     className="bg-[#1a0e0e] border-none text-white h-10 sm:h-12 rounded-md focus:ring-1 focus:ring-[#CC1F00] mt-1 focus:shadow-[0_0_0_2px_rgba(255,58,41,0.3)]"
@@ -218,6 +262,28 @@ export default function LoginComponent() {
             </form>
           </div>
         </div>
+      </div>
+
+      {/* Telegram Support Link */}
+      <div className="absolute bottom-4 left-4 z-20">
+        <a
+          href="https://t.me/your_support_bot" // Замените на ваш Telegram бот или канал
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 bg-[#1a0e0e] hover:bg-[#2a1515] text-gray-400 hover:text-white border border-gray-800 hover:border-[#FF3A29] px-4 py-3 rounded-xl transition-all duration-300 text-sm font-medium shadow-2xl backdrop-blur-sm hover:shadow-[0_0_20px_rgba(255,58,41,0.3)] hover:scale-105"
+        >
+          <div className="p-2 bg-[#FF3A29] group-hover:bg-[#CC1F00] rounded-lg transition-colors duration-300">
+            <MessageCircle size={16} className="text-white" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs text-gray-500 group-hover:text-gray-300 transition-colors duration-300">
+              Savollar bormi?
+            </span>
+            <span className="font-medium">
+              Yordam olish
+            </span>
+          </div>
+        </a>
       </div>
 
       <div className="fixed inset-0 lg:relative lg:w-[60%] opacity-20 lg:opacity-100 pointer-events-none">
