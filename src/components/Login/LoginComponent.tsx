@@ -18,10 +18,10 @@ interface UserFormInput {
 }
 
 // Функция для проверки, является ли введенный текст номером телефона
-const isPhoneNumber = (value: string): boolean => {
-  const cleanValue = value.replace(/\s/g, "");
-  return cleanValue.startsWith("+998") && /^\+998\d{9}$/.test(cleanValue.replace(/\s/g, ""));
-};
+// const isPhoneNumber = (value: string): boolean => {
+//   const cleanValue = value.replace(/\s/g, "");
+//   return cleanValue.startsWith("+998") && /^\+998\d{9}$/.test(cleanValue.replace(/\s/g, ""));
+// };
 
 // Функция для проверки, начинает ли пользователь вводить номер телефона
 const looksLikePhoneStart = (value: string): boolean => {
@@ -38,7 +38,6 @@ export default function LoginComponent() {
     handleSubmit,
     control,
     formState: { errors },
-    watch,
   } = useForm<UserFormInput>({
     defaultValues: {
       login: "",
@@ -49,7 +48,7 @@ export default function LoginComponent() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => setShowPassword(!showPassword);
   
-  const loginValue = watch("login");
+  // const loginValue = watch("login");
 
   const router = useRouter();
 
@@ -136,7 +135,7 @@ export default function LoginComponent() {
                 href="/register"
                 className="text-[#FF3A29] hover:text-[#E62200] ml-1"
               >
-                Ro'yxatdan o'tish
+                Ro&apos;yxatdan o&apos;tish
               </Link>
             </p>
 
@@ -173,7 +172,7 @@ export default function LoginComponent() {
                       type="text"
                       value={field.value}
                       onChange={(e) => {
-                        let input = e.target.value;
+                        const input = e.target.value;
                         
                         // Если пользователь начинает вводить номер телефона
                         if (looksLikePhoneStart(input)) {
