@@ -266,7 +266,7 @@ export default function LoginComponent() {
       {/* Telegram Support Link */}
       <div className="absolute bottom-4 left-4 z-20">
         <a
-          href="https://t.me/your_support_bot" // Замените на ваш Telegram бот или канал
+          href="https://t.me/J_Hayot_support" // Замените на ваш Telegram бот или канал
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-3 bg-[#1a0e0e] hover:bg-[#2a1515] text-gray-400 hover:text-white border border-gray-800 hover:border-[#FF3A29] px-4 py-3 rounded-xl transition-all duration-300 text-sm font-medium shadow-2xl backdrop-blur-sm hover:shadow-[0_0_20px_rgba(255,58,41,0.3)] hover:scale-105"
